@@ -1,0 +1,32 @@
+2022-04-23T12:56:12.521_257-05:00 [106323] [====] Start logger: ./srv1.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T12:56:12.523_917-05:00 [106323] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T12:56:12.523_945-05:00 [106323] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T12:56:12.523_949-05:00 [106323] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T12:56:12.523_991-05:00 [106323] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T12:56:12.523_997-05:00 [106323] [INFO] peer 1: DC ID 1, tcp://10.10.10.1:12347, voting member, 50
+my id: 1, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T12:56:12.524_000-05:00 [106323] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T12:56:12.524_046-05:00 [106323] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T12:56:12.524_117-05:00 [106359] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T12:56:13.594_349-05:00 [106356] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T12:56:13.594_378-05:00 [106356] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T12:56:13.594_405-05:00 [106356] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T12:56:13.594_427-05:00 [106356] [INFO] [VOTE INIT] my id 1, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T12:56:13.594_442-05:00 [106356] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T12:56:13.594_452-05:00 [106356] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T12:56:13.594_470-05:00 [106356] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T12:56:13.594_599-05:00 [106358] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T12:56:13.594_630-05:00 [106358] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T12:56:13.594_661-05:00 [106358] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://10.10.10.1:12347, voting member, 50
+my id: 1, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T12:56:13.825_637-05:00 [106323] [INFO] sent join request to peer 2, tcp://10.10.10.2:12345	[handle_join_leave.cxx:132, invite_srv_to_join_cluster()]
+2022-04-23T12:56:23.834_481-05:00 [106323] [WARN] previous adding server (2) is in progress, last activity: 10009 ms ago	[handle_join_leave.cxx:83, handle_add_srv_req()]
+2022-04-23T12:56:23.834_502-05:00 [106323] [WARN] activity timeout (last activity 10009 ms ago), start over	[handle_join_leave.cxx:95, handle_add_srv_req()]
+2022-04-23T12:56:23.834_744-05:00 [106323] [INFO] sent join request to peer 3, tcp://10.10.10.3:12346	[handle_join_leave.cxx:132, invite_srv_to_join_cluster()]

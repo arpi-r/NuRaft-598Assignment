@@ -25,6 +25,9 @@ limitations under the License.
 using namespace nuraft;
 using namespace raft_functional_common;
 
+std::vector<uint64_t> lat_values;
+std::string final_throughput_str = "";
+
 namespace raft_bench {
 
 LatencyCollector global_lat;
@@ -309,6 +312,7 @@ int worker_func(TestSuite::ThreadArgs* _args) {
 
         {   std::lock_guard<std::mutex> l(args->wg_lock_);
             args->wg_.addNumOpsDone(1);
+            lat_values.push_back(timer.getTimeUs());
         }
         args->num_ops_done_.fetch_add(1);
     }
@@ -398,10 +402,11 @@ int bench_main(const bench_config& config) {
 
         uint64_t cur_ops = param.num_ops_done_;
 
-        dd.set( 0, 0, "%zu/%zu", cur_us / 1000000, config.duration_ );
-        dd.set( 0, 1, "%zu", cur_ops );
-        dd.set( 0, 2, "%s ops/s", TestSuite::throughputStr(cur_ops, cur_us).c_str() );
-        dd.print();
+        // dd.set( 0, 0, "%zu/%zu", cur_us / 1000000, config.duration_ );
+        // dd.set( 0, 1, "%zu", cur_ops );
+        // dd.set( 0, 2, "%s ops/s", TestSuite::throughputStr(cur_ops, cur_us).c_str() );
+        // dd.print();
+        final_throughput_str = TestSuite::throughputStr(cur_ops, cur_us).c_str();
     }
     param.stop_signal_ = true;
 
@@ -410,25 +415,25 @@ int bench_main(const bench_config& config) {
         tt.join();
     }
 
-    _msg("-----\n");
-    TestSuite::_msg("%15s%10s%10s%10s%10s%10s\n",
-                    "OP", "p50", "p95", "p99", "p99.9", "p99.99");
+    // _msg("-----\n");
+    // TestSuite::_msg("%15s%10s%10s%10s%10s%10s\n",
+    //                 "OP", "p50", "p95", "p99", "p99.9", "p99.99");
 
-    TestSuite::_msg("%15s%10s%10s%10s%10s%10s\n",
-        "replication",
-        TestSuite::usToString
-        ( global_lat.getPercentile("rep", 50) ).c_str(),
-        TestSuite::usToString
-        ( global_lat.getPercentile("rep", 95) ).c_str(),
-        TestSuite::usToString
-        ( global_lat.getPercentile("rep", 99) ).c_str(),
-        TestSuite::usToString
-        ( global_lat.getPercentile("rep", 99.9) ).c_str(),
-        TestSuite::usToString
-        ( global_lat.getPercentile("rep", 99.99) ).c_str());
-    _msg("-----\n");
+    // TestSuite::_msg("%15s%10s%10s%10s%10s%10s\n",
+    //     "replication",
+    //     TestSuite::usToString
+    //     ( global_lat.getPercentile("rep", 50) ).c_str(),
+    //     TestSuite::usToString
+    //     ( global_lat.getPercentile("rep", 95) ).c_str(),
+    //     TestSuite::usToString
+    //     ( global_lat.getPercentile("rep", 99) ).c_str(),
+    //     TestSuite::usToString
+    //     ( global_lat.getPercentile("rep", 99.9) ).c_str(),
+    //     TestSuite::usToString
+    //     ( global_lat.getPercentile("rep", 99.99) ).c_str());
+    // _msg("-----\n");
 
-    write_latency_distribution();
+    // write_latency_distribution();
 
     return 0;
 }
@@ -524,6 +529,17 @@ int main(int argc, char** argv) {
     ts.options.printTestMessage = true;
 
     ts.doTest("bench main", bench_main, config);
+
+    int num_ops = lat_values.size();
+    uint64_t total_time = 0;
+    for (int ii=0; ii<num_ops; ++ii) {
+        total_time += lat_values[ii];
+    }
+    
+    float avg_latency = total_time / num_ops;
+
+    std::cout << "avg latency: " << avg_latency << std::endl;
+    std::cout << "final throughput: " << final_throughput_str << std::endl;
 
     return 0;
 }
