@@ -1,0 +1,54 @@
+starting follower 1 ...
+starting follower 2 ...
+
+Running benchmark
+Starting leader with  2 client threads ...
+Run with thread count 2 done!
+Starting leader with  4 client threads ...
+Run with thread count 4 done!
+Starting leader with  6 client threads ...
+Run with thread count 6 done!
+Starting leader with  8 client threads ...
+Run with thread count 8 done!
+Starting leader with  10 client threads ...
+Run with thread count 10 done!
+Starting leader with  12 client threads ...
+Run with thread count 12 done!
+Starting leader with  14 client threads ...
+Run with thread count 14 done!
+Starting leader with  16 client threads ...
+Run with thread count 16 done!
+Starting leader with  18 client threads ...
+Run with thread count 18 done!
+Starting leader with  20 client threads ...
+Run with thread count 20 done!
+Experiments done!
+
+Killing all benchmark process...
+raft_bench  :::  3082 killed
+raft_bench  :::  3169 killed
+
+
+Throughput (Kops/s)
+38.9
+46.9
+48.6
+50.0
+44.6
+43.6
+43.5
+44.2
+43.8
+44.2
+
+Average Latency (us)
+50
+83
+122
+157
+222
+273
+320
+360
+410
+451

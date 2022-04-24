@@ -110,3 +110,787 @@ num peers: 0	[raft_server.cxx:242, raft_server()]
 2022-04-23T21:00:36.385_974+00:00 [15035] [INFO] new configuration: log idx 1, prev log idx 0
 peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
 my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T22:53:53.681_646+00:00 [20836] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T22:53:53.683_180+00:00 [20836] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T22:53:53.683_209+00:00 [20836] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T22:53:53.683_213+00:00 [20836] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T22:53:53.683_237+00:00 [20836] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T22:53:53.683_242+00:00 [20836] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T22:53:53.683_245+00:00 [20836] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T22:53:53.683_281+00:00 [20836] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T22:53:53.683_310+00:00 [20872] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T22:53:55.239_572+00:00 [20839] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T22:53:55.239_584+00:00 [20839] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T22:53:55.239_597+00:00 [20839] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T22:53:55.239_616+00:00 [20839] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T22:53:55.239_622+00:00 [20839] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T22:53:55.239_625+00:00 [20839] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T22:53:55.239_641+00:00 [20839] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T22:53:55.239_717+00:00 [20871] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T22:53:55.239_731+00:00 [20871] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T22:53:55.239_740+00:00 [20871] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T22:54:45.603_871+00:00 [21007] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T22:54:45.605_423+00:00 [21007] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T22:54:45.605_464+00:00 [21007] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T22:54:45.605_473+00:00 [21007] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T22:54:45.605_496+00:00 [21007] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T22:54:45.605_500+00:00 [21007] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T22:54:45.605_503+00:00 [21007] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T22:54:45.605_542+00:00 [21007] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T22:54:45.605_576+00:00 [21043] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T22:54:46.716_787+00:00 [21010] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T22:54:46.716_799+00:00 [21010] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T22:54:46.716_813+00:00 [21010] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T22:54:46.716_822+00:00 [21010] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T22:54:46.716_829+00:00 [21010] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T22:54:46.716_832+00:00 [21010] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T22:54:46.716_848+00:00 [21010] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T22:54:46.716_925+00:00 [21042] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T22:54:46.716_939+00:00 [21042] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T22:54:46.716_949+00:00 [21042] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T22:59:16.819_109+00:00 [21310] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T22:59:16.820_626+00:00 [21310] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T22:59:16.820_663+00:00 [21310] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T22:59:16.820_667+00:00 [21310] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T22:59:16.820_694+00:00 [21310] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T22:59:16.820_698+00:00 [21310] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T22:59:16.820_701+00:00 [21310] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T22:59:16.820_734+00:00 [21310] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T22:59:16.820_761+00:00 [21346] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T22:59:18.451_017+00:00 [21313] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T22:59:18.451_028+00:00 [21313] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T22:59:18.451_041+00:00 [21313] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T22:59:18.451_052+00:00 [21313] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T22:59:18.451_058+00:00 [21313] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T22:59:18.451_062+00:00 [21313] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T22:59:18.451_079+00:00 [21313] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T22:59:18.451_167+00:00 [21345] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T22:59:18.451_176+00:00 [21345] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T22:59:18.451_185+00:00 [21345] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:02:27.156_544+00:00 [21817] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:02:27.158_026+00:00 [21817] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:02:27.158_061+00:00 [21817] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:02:27.158_067+00:00 [21817] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:02:27.158_093+00:00 [21817] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:02:27.158_098+00:00 [21817] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:02:27.158_100+00:00 [21817] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:02:27.158_137+00:00 [21817] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:02:27.158_171+00:00 [21853] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:02:28.332_355+00:00 [21820] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:02:28.332_367+00:00 [21820] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:02:28.332_379+00:00 [21820] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:02:28.332_390+00:00 [21820] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:02:28.332_395+00:00 [21820] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:02:28.332_398+00:00 [21820] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:02:28.332_414+00:00 [21820] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:02:28.332_498+00:00 [21852] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:02:28.332_512+00:00 [21852] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:02:28.332_523+00:00 [21852] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:08:26.924_199+00:00 [22302] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:08:26.925_634+00:00 [22302] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:08:26.925_665+00:00 [22302] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:08:26.925_671+00:00 [22302] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:08:26.925_699+00:00 [22302] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:08:26.925_703+00:00 [22302] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:08:26.925_706+00:00 [22302] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:08:26.925_736+00:00 [22302] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:08:26.925_893+00:00 [22339] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:08:28.334_943+00:00 [22310] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:08:28.334_954+00:00 [22310] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:08:28.334_968+00:00 [22310] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:08:28.334_978+00:00 [22310] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:08:28.334_983+00:00 [22310] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:08:28.334_986+00:00 [22310] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:08:28.335_002+00:00 [22310] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:08:28.335_058+00:00 [22338] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:08:28.335_065+00:00 [22338] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:08:28.335_073+00:00 [22338] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:10:12.459_490+00:00 [22826] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:10:12.460_841+00:00 [22826] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:10:12.460_873+00:00 [22826] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:10:12.460_878+00:00 [22826] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:10:12.460_904+00:00 [22826] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:10:12.460_909+00:00 [22826] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:10:12.460_911+00:00 [22826] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:10:12.460_942+00:00 [22826] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:10:12.461_084+00:00 [22863] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:10:13.878_160+00:00 [22834] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:10:13.878_172+00:00 [22834] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:10:13.878_184+00:00 [22834] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:10:13.878_195+00:00 [22834] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:10:13.878_201+00:00 [22834] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:10:13.878_204+00:00 [22834] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:10:13.878_222+00:00 [22834] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:10:13.878_277+00:00 [22862] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:10:13.878_283+00:00 [22862] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:10:13.878_292+00:00 [22862] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:14:44.932_391+00:00 [23877] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:14:44.933_806+00:00 [23877] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:14:44.933_838+00:00 [23877] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:14:44.933_845+00:00 [23877] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:14:44.933_869+00:00 [23877] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:14:44.933_874+00:00 [23877] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:14:44.933_877+00:00 [23877] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:14:44.933_914+00:00 [23877] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:14:44.934_064+00:00 [23914] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:14:46.441_103+00:00 [23885] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:14:46.441_114+00:00 [23885] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:14:46.441_126+00:00 [23885] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:14:46.441_136+00:00 [23885] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:14:46.441_141+00:00 [23885] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:14:46.441_144+00:00 [23885] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:14:46.441_161+00:00 [23885] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:14:46.441_204+00:00 [23913] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:14:46.441_210+00:00 [23913] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:14:46.441_219+00:00 [23913] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:20:37.107_543+00:00 [25459] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:20:37.109_084+00:00 [25459] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:20:37.109_112+00:00 [25459] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:20:37.109_118+00:00 [25459] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:20:37.109_142+00:00 [25459] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:20:37.109_146+00:00 [25459] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:20:37.109_148+00:00 [25459] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:20:37.109_180+00:00 [25459] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:20:37.109_326+00:00 [25496] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:20:39.076_412+00:00 [25467] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:20:39.076_424+00:00 [25467] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:20:39.076_438+00:00 [25467] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:20:39.076_454+00:00 [25467] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:20:39.076_459+00:00 [25467] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:20:39.076_462+00:00 [25467] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:20:39.076_479+00:00 [25467] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:20:39.076_531+00:00 [25495] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:20:39.076_538+00:00 [25495] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:20:39.076_548+00:00 [25495] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:40:43.713_573+00:00 [28817] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:40:43.715_115+00:00 [28817] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:40:43.715_147+00:00 [28817] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:40:43.715_152+00:00 [28817] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:40:43.715_180+00:00 [28817] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:40:43.715_184+00:00 [28817] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:40:43.715_188+00:00 [28817] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:40:43.715_225+00:00 [28817] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:40:43.715_263+00:00 [28853] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:40:45.429_485+00:00 [28821] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:40:45.429_496+00:00 [28821] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:40:45.429_509+00:00 [28821] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:40:45.429_518+00:00 [28821] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:40:45.429_525+00:00 [28821] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:40:45.429_528+00:00 [28821] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:40:45.429_543+00:00 [28821] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:40:45.429_611+00:00 [28852] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:40:45.429_620+00:00 [28852] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:40:45.429_628+00:00 [28852] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-23T23:49:08.952_359+00:00 [29602] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-23T23:49:08.953_856+00:00 [29602] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-23T23:49:08.953_895+00:00 [29602] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-23T23:49:08.953_901+00:00 [29602] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-23T23:49:08.953_925+00:00 [29602] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-23T23:49:08.953_929+00:00 [29602] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-23T23:49:08.953_932+00:00 [29602] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-23T23:49:08.953_967+00:00 [29602] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-23T23:49:08.953_995+00:00 [29638] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-23T23:49:10.683_155+00:00 [29607] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-23T23:49:10.683_165+00:00 [29607] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-23T23:49:10.683_177+00:00 [29607] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-23T23:49:10.683_191+00:00 [29607] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-23T23:49:10.683_198+00:00 [29607] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-23T23:49:10.683_201+00:00 [29607] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-23T23:49:10.683_217+00:00 [29607] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-23T23:49:10.683_284+00:00 [29637] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-23T23:49:10.683_298+00:00 [29637] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-23T23:49:10.683_308+00:00 [29637] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T00:08:42.105_152+00:00 [31033] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T00:08:42.106_704+00:00 [31033] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T00:08:42.106_739+00:00 [31033] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T00:08:42.106_744+00:00 [31033] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T00:08:42.106_771+00:00 [31033] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T00:08:42.106_775+00:00 [31033] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T00:08:42.106_777+00:00 [31033] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T00:08:42.106_813+00:00 [31033] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T00:08:42.106_846+00:00 [31069] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T00:08:43.521_039+00:00 [31038] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T00:08:43.521_050+00:00 [31038] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T00:08:43.521_066+00:00 [31038] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T00:08:43.521_079+00:00 [31038] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T00:08:43.521_087+00:00 [31038] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T00:08:43.521_091+00:00 [31038] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T00:08:43.521_114+00:00 [31038] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T00:08:43.521_207+00:00 [31068] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T00:08:43.521_225+00:00 [31068] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T00:08:43.521_240+00:00 [31068] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T00:13:00.957_360+00:00 [33517] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T00:13:00.958_891+00:00 [33517] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T00:13:00.958_927+00:00 [33517] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T00:13:00.958_934+00:00 [33517] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T00:13:00.958_958+00:00 [33517] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T00:13:00.958_962+00:00 [33517] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T00:13:00.958_964+00:00 [33517] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T00:13:00.959_006+00:00 [33517] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T00:13:00.959_031+00:00 [33553] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T00:13:02.016_197+00:00 [33520] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T00:13:02.016_207+00:00 [33520] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T00:13:02.016_221+00:00 [33520] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T00:13:02.016_231+00:00 [33520] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T00:13:02.016_237+00:00 [33520] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T00:13:02.016_240+00:00 [33520] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T00:13:02.016_256+00:00 [33520] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T00:13:02.016_345+00:00 [33552] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T00:13:02.016_359+00:00 [33552] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T00:13:02.016_370+00:00 [33552] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T00:13:32.068_697+00:00 [33667] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T00:13:32.070_217+00:00 [33667] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T00:13:32.070_254+00:00 [33667] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T00:13:32.070_259+00:00 [33667] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T00:13:32.070_286+00:00 [33667] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T00:13:32.070_290+00:00 [33667] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T00:13:32.070_293+00:00 [33667] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T00:13:32.070_331+00:00 [33667] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T00:13:32.070_366+00:00 [33703] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T00:13:33.571_509+00:00 [33670] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T00:13:33.571_519+00:00 [33670] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T00:13:33.571_532+00:00 [33670] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T00:13:33.571_541+00:00 [33670] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T00:13:33.571_546+00:00 [33670] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T00:13:33.571_549+00:00 [33670] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T00:13:33.571_565+00:00 [33670] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T00:13:33.571_649+00:00 [33702] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T00:13:33.571_663+00:00 [33702] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T00:13:33.571_674+00:00 [33702] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T06:14:14.160_966+00:00 [37228] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T06:14:14.162_557+00:00 [37228] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T06:14:14.162_602+00:00 [37228] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T06:14:14.162_607+00:00 [37228] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T06:14:14.162_633+00:00 [37228] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T06:14:14.162_637+00:00 [37228] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T06:14:14.162_640+00:00 [37228] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T06:14:14.162_680+00:00 [37228] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T06:14:14.162_709+00:00 [37264] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T06:14:16.018_883+00:00 [37231] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T06:14:16.018_894+00:00 [37231] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T06:14:16.018_908+00:00 [37231] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T06:14:16.018_918+00:00 [37231] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T06:14:16.018_924+00:00 [37231] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T06:14:16.018_928+00:00 [37231] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T06:14:16.018_945+00:00 [37231] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T06:14:16.019_015+00:00 [37263] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T06:14:16.019_023+00:00 [37263] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T06:14:16.019_032+00:00 [37263] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T06:21:29.699_516+00:00 [37632] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T06:21:29.701_181+00:00 [37632] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T06:21:29.701_218+00:00 [37632] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T06:21:29.701_227+00:00 [37632] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T06:21:29.701_248+00:00 [37632] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T06:21:29.701_252+00:00 [37632] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T06:21:29.701_254+00:00 [37632] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T06:21:29.701_291+00:00 [37632] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T06:21:29.701_313+00:00 [37671] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T06:21:31.696_460+00:00 [37636] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T06:21:31.696_472+00:00 [37636] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T06:21:31.696_486+00:00 [37636] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T06:21:31.696_497+00:00 [37636] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T06:21:31.696_503+00:00 [37636] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T06:21:31.696_506+00:00 [37636] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T06:21:31.696_523+00:00 [37636] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T06:21:31.696_566+00:00 [37670] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T06:21:31.696_572+00:00 [37670] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T06:21:31.696_581+00:00 [37670] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T06:25:15.797_246+00:00 [38099] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T06:25:15.799_352+00:00 [38099] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T06:25:15.799_391+00:00 [38099] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T06:25:15.799_398+00:00 [38099] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T06:25:15.799_425+00:00 [38099] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T06:25:15.799_430+00:00 [38099] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T06:25:15.799_434+00:00 [38099] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T06:25:15.799_484+00:00 [38099] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T06:25:15.799_517+00:00 [38138] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T06:25:17.322_707+00:00 [38105] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T06:25:17.322_719+00:00 [38105] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T06:25:17.322_732+00:00 [38105] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T06:25:17.322_746+00:00 [38105] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T06:25:17.322_752+00:00 [38105] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T06:25:17.322_754+00:00 [38105] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T06:25:17.322_771+00:00 [38105] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T06:25:17.322_826+00:00 [38137] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T06:25:17.322_833+00:00 [38137] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T06:25:17.322_841+00:00 [38137] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T06:37:33.191_967+00:00 [38448] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T06:37:33.193_540+00:00 [38448] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T06:37:33.193_573+00:00 [38448] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T06:37:33.193_578+00:00 [38448] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T06:37:33.193_604+00:00 [38448] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T06:37:33.193_608+00:00 [38448] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T06:37:33.193_611+00:00 [38448] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T06:37:33.193_650+00:00 [38448] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T06:37:33.193_677+00:00 [38484] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T06:37:35.017_888+00:00 [38451] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T06:37:35.017_899+00:00 [38451] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T06:37:35.017_912+00:00 [38451] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T06:37:35.017_930+00:00 [38451] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T06:37:35.017_936+00:00 [38451] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T06:37:35.017_940+00:00 [38451] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T06:37:35.017_956+00:00 [38451] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T06:37:35.018_034+00:00 [38483] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T06:37:35.018_043+00:00 [38483] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T06:37:35.018_053+00:00 [38483] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T06:44:33.465_079+00:00 [39865] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T06:44:33.467_032+00:00 [39865] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T06:44:33.467_071+00:00 [39865] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T06:44:33.467_084+00:00 [39865] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T06:44:33.467_115+00:00 [39865] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T06:44:33.467_121+00:00 [39865] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T06:44:33.467_126+00:00 [39865] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T06:44:33.467_174+00:00 [39865] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T06:44:33.467_385+00:00 [39928] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T06:44:34.555_414+00:00 [39875] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T06:44:34.555_426+00:00 [39875] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T06:44:34.555_439+00:00 [39875] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T06:44:34.555_449+00:00 [39875] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T06:44:34.555_455+00:00 [39875] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T06:44:34.555_458+00:00 [39875] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T06:44:34.555_473+00:00 [39875] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T06:44:34.555_521+00:00 [39926] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T06:44:34.555_527+00:00 [39926] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T06:44:34.555_536+00:00 [39926] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T06:56:11.169_863+00:00 [41592] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T06:56:11.171_819+00:00 [41592] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T06:56:11.171_866+00:00 [41592] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T06:56:11.171_873+00:00 [41592] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T06:56:11.171_904+00:00 [41592] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T06:56:11.171_910+00:00 [41592] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T06:56:11.171_913+00:00 [41592] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T06:56:11.171_954+00:00 [41592] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T06:56:11.172_167+00:00 [41631] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T06:56:12.886_162+00:00 [41602] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T06:56:12.886_173+00:00 [41602] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T06:56:12.886_188+00:00 [41602] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T06:56:12.886_205+00:00 [41602] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T06:56:12.886_210+00:00 [41602] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T06:56:12.886_213+00:00 [41602] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T06:56:12.886_229+00:00 [41602] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T06:56:12.886_274+00:00 [41630] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T06:56:12.886_280+00:00 [41630] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T06:56:12.886_289+00:00 [41630] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T07:04:43.055_077+00:00 [43014] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T07:04:43.057_189+00:00 [43014] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T07:04:43.057_238+00:00 [43014] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T07:04:43.057_249+00:00 [43014] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T07:04:43.057_287+00:00 [43014] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T07:04:43.057_295+00:00 [43014] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T07:04:43.057_300+00:00 [43014] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T07:04:43.057_361+00:00 [43014] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T07:04:43.057_646+00:00 [43056] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T07:04:44.707_538+00:00 [43024] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T07:04:44.707_549+00:00 [43024] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T07:04:44.707_562+00:00 [43024] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T07:04:44.707_578+00:00 [43024] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T07:04:44.707_585+00:00 [43024] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T07:04:44.707_588+00:00 [43024] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T07:04:44.707_604+00:00 [43024] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T07:04:44.707_651+00:00 [43055] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T07:04:44.707_657+00:00 [43055] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T07:04:44.707_666+00:00 [43055] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T07:16:50.501_308+00:00 [44385] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T07:16:50.503_283+00:00 [44385] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T07:16:50.503_329+00:00 [44385] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T07:16:50.503_338+00:00 [44385] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T07:16:50.503_375+00:00 [44385] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T07:16:50.503_382+00:00 [44385] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T07:16:50.503_386+00:00 [44385] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T07:16:50.503_430+00:00 [44385] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T07:16:50.503_649+00:00 [44454] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T07:16:51.570_644+00:00 [44395] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T07:16:51.570_656+00:00 [44395] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T07:16:51.570_670+00:00 [44395] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T07:16:51.570_679+00:00 [44395] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T07:16:51.570_685+00:00 [44395] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T07:16:51.570_688+00:00 [44395] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T07:16:51.570_704+00:00 [44395] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T07:16:51.570_751+00:00 [44452] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T07:16:51.570_757+00:00 [44452] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T07:16:51.570_766+00:00 [44452] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T11:54:58.927_579+00:00 [1786] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T11:54:58.965_476+00:00 [1786] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T11:54:58.971_112+00:00 [1786] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T11:54:58.971_124+00:00 [1786] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T11:54:58.971_173+00:00 [1786] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T11:54:58.971_181+00:00 [1786] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T11:54:58.971_188+00:00 [1786] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T11:54:58.971_250+00:00 [1786] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T11:54:58.971_287+00:00 [1859] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T11:55:00.439_437+00:00 [1805] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T11:55:00.439_447+00:00 [1805] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T11:55:00.439_462+00:00 [1805] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T11:55:00.439_473+00:00 [1805] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T11:55:00.439_480+00:00 [1805] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T11:55:00.439_484+00:00 [1805] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T11:55:00.439_501+00:00 [1805] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T11:55:00.439_561+00:00 [1856] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T11:55:00.439_569+00:00 [1856] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T11:55:00.439_579+00:00 [1856] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T12:03:58.344_063+00:00 [3082] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T12:03:58.345_380+00:00 [3082] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T12:03:58.345_411+00:00 [3082] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T12:03:58.345_416+00:00 [3082] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T12:03:58.345_441+00:00 [3082] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T12:03:58.345_445+00:00 [3082] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T12:03:58.345_447+00:00 [3082] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T12:03:58.345_475+00:00 [3082] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T12:03:58.345_614+00:00 [3118] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T12:03:59.601_710+00:00 [3089] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T12:03:59.601_722+00:00 [3089] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T12:03:59.601_737+00:00 [3089] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T12:03:59.601_749+00:00 [3089] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T12:03:59.601_755+00:00 [3089] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T12:03:59.601_758+00:00 [3089] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T12:03:59.601_777+00:00 [3089] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T12:03:59.601_828+00:00 [3117] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T12:03:59.601_836+00:00 [3117] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T12:03:59.601_845+00:00 [3117] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T12:32:56.669_207+00:00 [4906] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T12:32:56.670_555+00:00 [4906] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T12:32:56.670_588+00:00 [4906] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T12:32:56.670_596+00:00 [4906] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T12:32:56.670_618+00:00 [4906] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T12:32:56.670_622+00:00 [4906] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T12:32:56.670_625+00:00 [4906] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T12:32:56.670_653+00:00 [4906] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T12:32:56.670_796+00:00 [4942] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T12:32:58.416_833+00:00 [4913] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T12:32:58.416_843+00:00 [4913] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T12:32:58.416_858+00:00 [4913] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T12:32:58.416_870+00:00 [4913] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T12:32:58.416_877+00:00 [4913] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T12:32:58.416_881+00:00 [4913] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T12:32:58.416_899+00:00 [4913] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T12:32:58.416_948+00:00 [4941] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T12:32:58.416_955+00:00 [4941] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T12:32:58.416_966+00:00 [4941] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T12:43:40.266_888+00:00 [6370] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T12:43:40.268_275+00:00 [6370] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T12:43:40.268_307+00:00 [6370] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T12:43:40.268_312+00:00 [6370] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T12:43:40.268_336+00:00 [6370] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T12:43:40.268_341+00:00 [6370] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T12:43:40.268_343+00:00 [6370] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T12:43:40.268_374+00:00 [6370] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T12:43:40.268_515+00:00 [6406] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T12:43:41.762_634+00:00 [6377] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T12:43:41.762_646+00:00 [6377] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T12:43:41.762_661+00:00 [6377] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T12:43:41.762_672+00:00 [6377] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T12:43:41.762_678+00:00 [6377] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T12:43:41.762_682+00:00 [6377] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T12:43:41.762_700+00:00 [6377] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T12:43:41.762_756+00:00 [6405] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T12:43:41.762_763+00:00 [6405] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T12:43:41.762_779+00:00 [6405] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T13:02:13.952_680+00:00 [8230] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T13:02:13.954_015+00:00 [8230] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T13:02:13.954_047+00:00 [8230] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T13:02:13.954_054+00:00 [8230] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T13:02:13.954_076+00:00 [8230] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T13:02:13.954_080+00:00 [8230] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T13:02:13.954_083+00:00 [8230] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T13:02:13.954_111+00:00 [8230] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T13:02:13.954_259+00:00 [8266] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T13:02:15.159_330+00:00 [8237] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T13:02:15.159_342+00:00 [8237] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T13:02:15.159_357+00:00 [8237] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T13:02:15.159_372+00:00 [8237] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T13:02:15.159_378+00:00 [8237] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T13:02:15.159_382+00:00 [8237] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T13:02:15.159_401+00:00 [8237] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T13:02:15.159_457+00:00 [8265] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T13:02:15.159_465+00:00 [8265] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T13:02:15.159_474+00:00 [8265] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T13:22:12.789_160+00:00 [9349] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T13:22:12.790_488+00:00 [9349] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T13:22:12.790_520+00:00 [9349] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T13:22:12.790_524+00:00 [9349] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T13:22:12.790_549+00:00 [9349] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T13:22:12.790_553+00:00 [9349] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T13:22:12.790_556+00:00 [9349] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T13:22:12.790_587+00:00 [9349] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T13:22:12.790_734+00:00 [9385] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T13:22:14.769_754+00:00 [9356] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T13:22:14.769_765+00:00 [9356] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T13:22:14.769_780+00:00 [9356] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T13:22:14.769_791+00:00 [9356] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T13:22:14.769_799+00:00 [9356] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T13:22:14.769_802+00:00 [9356] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T13:22:14.769_822+00:00 [9356] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T13:22:14.769_872+00:00 [9384] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T13:22:14.769_880+00:00 [9384] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T13:22:14.769_891+00:00 [9384] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-24T13:37:44.246_657+00:00 [10417] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-24T13:37:44.248_014+00:00 [10417] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-24T13:37:44.248_042+00:00 [10417] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding OFF, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-24T13:37:44.248_048+00:00 [10417] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-24T13:37:44.248_070+00:00 [10417] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-24T13:37:44.248_074+00:00 [10417] [INFO] peer 2: DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-24T13:37:44.248_078+00:00 [10417] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-24T13:37:44.248_106+00:00 [10417] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-24T13:37:44.248_250+00:00 [10453] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-24T13:37:46.278_309+00:00 [10424] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-24T13:37:46.278_319+00:00 [10424] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-24T13:37:46.278_334+00:00 [10424] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-24T13:37:46.278_345+00:00 [10424] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-24T13:37:46.278_352+00:00 [10424] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-24T13:37:46.278_355+00:00 [10424] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-24T13:37:46.278_373+00:00 [10424] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-24T13:37:46.278_423+00:00 [10452] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-24T13:37:46.278_431+00:00 [10452] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-24T13:37:46.278_441+00:00 [10452] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://10.10.10.2:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
