@@ -383,6 +383,34 @@ int bench_main(const bench_config& config) {
     CHK_Z( add_servers(stuff, config) );
     _msg("-----\n");
 
+    char buf[512];
+    FILE *cmd_pipe = popen("pidof raft_bench", "r");
+
+    fgets(buf, 512, cmd_pipe);
+    // pid_t pid = strtoul(buf, NULL, 10);
+    std::cout << "pids: " << buf << std::endl;
+
+    std::vector<pid_t> pids;
+    int pi;
+    std::string s = "";
+    for (pi = 0; buf[pi]!='\0'; pi++) {
+        if (buf[pi] == ' ') {
+            pid_t pid = std::stoi(s);
+            pids.push_back(pid);
+            s = "";
+            continue;
+        }
+        s = s + buf[pi];
+    }
+    pid_t pid = std::stoi(s);
+    pids.push_back(pid);
+
+    for (pid_t p: pids) {
+        std::cout << p << std::endl;
+    }
+
+    pclose( cmd_pipe );
+
     worker_params param(config, stuff);
     std::vector<TestSuite::ThreadHolder> h_workers(config.num_threads_);
     for (size_t ii=0; ii<h_workers.size(); ++ii) {
@@ -395,12 +423,19 @@ int bench_main(const bench_config& config) {
     std::vector<size_t> col_width(3, 15);
     dd.setWidth(col_width);
     TestSuite::Timer duration_timer(config.duration_ * 1000);
+    bool follower_killed = false;
     while (!duration_timer.timeout()) {
         TestSuite::sleep_ms(80);
         uint64_t cur_us = duration_timer.getTimeUs();
         if (!cur_us) continue;
 
         uint64_t cur_ops = param.num_ops_done_;
+
+        if (!follower_killed && cur_ops >= 10000) {
+            std::cout << "killing node 3\n";
+            system(("kill -9 " + std::to_string(pids[1])).c_str());
+            follower_killed = true;
+        }
 
         // dd.set( 0, 0, "%zu/%zu", cur_us / 1000000, config.duration_ );
         // dd.set( 0, 1, "%zu", cur_ops );
