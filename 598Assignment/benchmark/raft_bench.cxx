@@ -249,6 +249,8 @@ int add_servers(server_stuff& stuff, const bench_config& config) {
             return -1;
         }
 
+        bool found = false;
+
         // Wait until it appears in server list.
         const size_t MAX_TRY = 40;
         for (size_t jj=0; jj<MAX_TRY; ++jj) {
@@ -259,8 +261,14 @@ int add_servers(server_stuff& stuff, const bench_config& config) {
                 stuff.raft_instance_->get_srv_config(server_id_to_add);
             if (conf) {
                 _msg(" done\n");
+                found = true;
                 break;
             }
+        }
+
+        if (!found) {
+            std::cout << "\nServer ID " << server_id_to_add << " not found!\n";
+            return -1;
         }
     }
 
@@ -374,14 +382,62 @@ int bench_main(const bench_config& config) {
     CHK_Z( init_raft(stuff) );
     _msg("-----\n");
 
-    if (stuff.server_id_ > 1) {
+    while (stuff.server_id_ > 1) {
         // Follower, just sleep
-        TestSuite::sleep_sec(config.duration_, "ready");
+        // TestSuite::sleep_sec(config.duration_, "ready");
+        TestSuite::sleep_sec(10, "ready");
+        std::cout << "my server id: " << stuff.server_id_ << std::endl << "leader id: " << stuff.raft_instance_->get_leader() << std::endl;
     }
 
     // Leader.
     CHK_Z( add_servers(stuff, config) );
     _msg("-----\n");
+
+    char buf[512];
+    FILE *cmd_pipe = popen("pidof raft_bench", "r");
+
+    fgets(buf, 512, cmd_pipe);
+    // pid_t pid = strtoul(buf, NULL, 10);
+    std::cout << "pids: " << buf << std::endl;
+
+    std::vector<pid_t> pids;
+    int pi;
+    std::string s = "";
+    for (pi = 0; buf[pi]!='\0'; pi++) {
+        if (buf[pi] == ' ') {
+            pid_t pid = std::stoi(s);
+            pids.push_back(pid);
+            s = "";
+            continue;
+        }
+        s = s + buf[pi];
+    }
+    pid_t pid = std::stoi(s);
+    pids.push_back(pid);
+
+    for (pid_t p: pids) {
+        std::cout << p << std::endl;
+    }
+
+    pclose( cmd_pipe );
+    std::cout << std::endl;
+
+    std::vector< ptr<srv_config> > configs;
+    stuff.raft_instance_->get_srv_config_all(configs);
+
+    int leader_id = stuff.raft_instance_->get_leader();
+
+    for (auto& entry: configs) {
+        ptr<srv_config>& srv = entry;
+        std::cout
+            << "server id " << srv->get_id()
+            << ": " << srv->get_endpoint();
+        if (srv->get_id() == leader_id) {
+            std::cout << " (LEADER)";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 
     worker_params param(config, stuff);
     std::vector<TestSuite::ThreadHolder> h_workers(config.num_threads_);

@@ -249,6 +249,8 @@ int add_servers(server_stuff& stuff, const bench_config& config) {
             return -1;
         }
 
+        bool found = false;
+
         // Wait until it appears in server list.
         const size_t MAX_TRY = 40;
         for (size_t jj=0; jj<MAX_TRY; ++jj) {
@@ -259,8 +261,14 @@ int add_servers(server_stuff& stuff, const bench_config& config) {
                 stuff.raft_instance_->get_srv_config(server_id_to_add);
             if (conf) {
                 _msg(" done\n");
+                found = true;
                 break;
             }
+        }
+
+        if (!found) {
+            std::cout << "\nServer ID " << server_id_to_add << " not found!\n";
+            return -1;
         }
     }
 
@@ -374,9 +382,11 @@ int bench_main(const bench_config& config) {
     CHK_Z( init_raft(stuff) );
     _msg("-----\n");
 
-    if (stuff.server_id_ > 1) {
+    while (stuff.server_id_ > 1) {
         // Follower, just sleep
-        TestSuite::sleep_sec(config.duration_, "ready");
+        // TestSuite::sleep_sec(config.duration_, "ready");
+        TestSuite::sleep_sec(10, "ready");
+        std::cout << "my server id: " << stuff.server_id_ << std::endl << "leader id: " << stuff.raft_instance_->get_leader() << std::endl;
     }
 
     // Leader.
@@ -410,6 +420,24 @@ int bench_main(const bench_config& config) {
     }
 
     pclose( cmd_pipe );
+    std::cout << std::endl;
+
+    std::vector< ptr<srv_config> > configs;
+    stuff.raft_instance_->get_srv_config_all(configs);
+
+    int leader_id = stuff.raft_instance_->get_leader();
+
+    for (auto& entry: configs) {
+        ptr<srv_config>& srv = entry;
+        std::cout
+            << "server id " << srv->get_id()
+            << ": " << srv->get_endpoint();
+        if (srv->get_id() == leader_id) {
+            std::cout << " (LEADER)";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 
     worker_params param(config, stuff);
     std::vector<TestSuite::ThreadHolder> h_workers(config.num_threads_);
@@ -423,19 +451,12 @@ int bench_main(const bench_config& config) {
     std::vector<size_t> col_width(3, 15);
     dd.setWidth(col_width);
     TestSuite::Timer duration_timer(config.duration_ * 1000);
-    bool follower_killed = false;
     while (!duration_timer.timeout()) {
         TestSuite::sleep_ms(80);
         uint64_t cur_us = duration_timer.getTimeUs();
         if (!cur_us) continue;
 
         uint64_t cur_ops = param.num_ops_done_;
-
-        if (!follower_killed && cur_ops >= 10000) {
-            std::cout << "killing node 3\n";
-            system(("kill -9 " + std::to_string(pids[1])).c_str());
-            follower_killed = true;
-        }
 
         // dd.set( 0, 0, "%zu/%zu", cur_us / 1000000, config.duration_ );
         // dd.set( 0, 1, "%zu", cur_ops );

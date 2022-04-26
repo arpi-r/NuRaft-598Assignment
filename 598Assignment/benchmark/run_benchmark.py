@@ -2,29 +2,32 @@ import subprocess
 import psutil
 import time
 
-print("starting follower 1 ...")
-command1 = ["taskset", "-ac", "0", "./raft_bench", "2", "10.10.10.2:12345", "3600"]
-process1 = subprocess.Popen(command1, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-
-time.sleep(30)
-
-print("starting follower 2 ...")
-command2 = ["taskset", "-ac", "1", "./raft_bench", "3", "10.10.10.3:12346", "3600"]
-process2 = subprocess.Popen(command2, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-
-time.sleep(30)
-print()
-
 print("Running benchmark")
 
 avg_lat = []
 thru = []
+threads = []
 
 for i in range(2, 22, 2):
+    print("starting follower 1 ...")
+    command1 = ["taskset", "-ac", "0", "./raft_bench", "2", "localhost:12345", "3600"]
+    # command1 = ["./raft_bench", "2", "localhost:12345", "3600"]
+    process1 = subprocess.Popen(command1, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    time.sleep(10)
+
+    print("starting follower 2 ...")
+    command2 = ["taskset", "-ac", "1", "./raft_bench", "3", "localhost:12346", "3600"]
+    # command2 = ["./raft_bench", "3", "localhost:12346", "3600"]
+    process2 = subprocess.Popen(command2, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    time.sleep(10)
+    
     print("Starting leader with ", str(i), "client threads ...")
-    command = ["taskset", "-ac", "2-3", "./raft_bench", "1", "10.10.10.1:12347",  "20", "55000", str(i), "2048", "10.10.10.2:12345", "10.10.10.3:12346"]
+    command = ["taskset", "-ac", "2", "./raft_bench", "1", "localhost:12347",  "20", "40000", str(i), "2048", "localhost:12345", "localhost:12346"]
+    # command = ["./raft_bench", "1", "localhost:12347",  "20", "40000", str(i), "2048", "localhost:12345", "localhost:12346"]
     process = subprocess.Popen(command, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     out, err = process.communicate()
+
+    print(out)
 
     if err:
         print("ERR: ")
@@ -36,11 +39,27 @@ for i in range(2, 22, 2):
 
     for line in out_lines:
         if 'avg latency' in line:
+            threads.append(i)
             avg_lat.append(line.split()[2])
         if 'final throughput' in line:
             thru.append(line.split()[2][:-1])
     
+    print("killing followers...")
+    for proc in psutil.process_iter():
+        try:
+            processName = proc.name()
+            if processName == "raft_bench":
+                processID = proc.pid
+                print(processName , ' ::: ', processID, "killed")
+                command_kill = ["kill", "-9", str(processID)]
+                process_kill = subprocess.Popen(command_kill, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    
+    time.sleep(15)
+    
     print("Run with thread count", i, "done!")
+    print()
     
 print("Experiments done!")
 print()
@@ -59,6 +78,9 @@ for proc in psutil.process_iter():
         pass
 
 print()
+print()
+
+print(threads)
 print()
 
 print("Throughput (Kops/s)")

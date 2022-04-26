@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 throughput = []
 latency = []
 
-with open("bench_out2.txt", "r") as f:
+with open("bench_out.txt", "r") as f:
     out_lines = f.readlines()
 
 start_throughput = False
@@ -40,7 +40,7 @@ plt.title('Baseline Benchmark Performance', fontsize=20)
 plt.xlabel('Throughput (Kops/s)', fontsize=12)
 plt.ylabel('Average Latency (us)', fontsize=12)
 
-plt.axis([36, 52, 0, 500])
+plt.axis([6, 21, 250, 1200])
 plt.grid()
 
 plt.show()
