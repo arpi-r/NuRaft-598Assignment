@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 throughput = []
 latency = []
 
-with open("bench_out.txt", "r") as f:
+with open("bench_out2.txt", "r") as f:
     out_lines = f.readlines()
 
 start_throughput = False
