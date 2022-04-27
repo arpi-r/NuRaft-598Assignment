@@ -1,0 +1,136 @@
+Fault injection: leader crash
+Running performance experiments
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  2 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n2 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ....... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 29533 29494 29409\n\n29533\n29494\n29409\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 2\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.8 s\x1b[0m)\navg latency: 455\nfinal throughput: 4.4K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.8 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  29409 killed
+Follower 2  :::  29494 killed
+Leader  :::  29533 killed
+Run with thread count 2 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  4 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n4 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ..... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 29726 29677 29623\n\n29726\n29677\n29623\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 3\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.3 s\x1b[0m)\navg latency: 338\nfinal throughput: 11.8K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.3 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  29623 killed
+Follower 2  :::  29677 killed
+Leader  :::  29726 killed
+Run with thread count 4 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  6 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n6 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ...... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 29945 29898 29844\n\n29945\n29898\n29844\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 3\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.6 s\x1b[0m)\navg latency: 401\nfinal throughput: 14.9K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.6 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  29844 killed
+Follower 2  :::  29898 killed
+Leader  :::  29945 killed
+Run with thread count 6 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  8 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n8 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ....... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 30166 30111 30055\n\n30166\n30111\n30055\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 2\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.8 s\x1b[0m)\navg latency: 1135\nfinal throughput: 7.0K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.8 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  30055 killed
+Follower 2  :::  30111 killed
+Leader  :::  30166 killed
+Run with thread count 8 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  10 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n10 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ........ done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 30390 30335 30279\n\n30390\n30335\n30279\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 2\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m57.1 s\x1b[0m)\navg latency: 1944\nfinal throughput: 5.1K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m57.1 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  30279 killed
+Follower 2  :::  30335 killed
+Leader  :::  30390 killed
+Run with thread count 10 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  12 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n12 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ....... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 30600 30543 30497\n\n30600\n30543\n30497\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 3\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.8 s\x1b[0m)\navg latency: 567\nfinal throughput: 21.1K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.8 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  30497 killed
+Follower 2  :::  30543 killed
+Leader  :::  30600 killed
+Run with thread count 12 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  14 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n14 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ...... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 30833 30786 30732\n\n30833\n30786\n30732\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 2\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.6 s\x1b[0m)\navg latency: 2509\nfinal throughput: 5.6K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.6 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  30732 killed
+Follower 2  :::  30786 killed
+Leader  :::  30833 killed
+Run with thread count 14 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  16 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n16 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ....... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 31063 31008 30951\n\n31063\n31008\n30951\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 2\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.8 s\x1b[0m)\navg latency: 2678\nfinal throughput: 6.0K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.8 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  30951 killed
+Follower 2  :::  31008 killed
+Leader  :::  31063 killed
+Run with thread count 16 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  18 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n18 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ...... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 31295 31238 31184\n\n31295\n31238\n31184\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 3\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.6 s\x1b[0m)\navg latency: 1989\nfinal throughput: 9.0K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.6 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  31184 killed
+Follower 2  :::  31238 killed
+Leader  :::  31295 killed
+Run with thread count 18 done!
+
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  20 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n20 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ...... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 31522 31483 31430\n\n31522\n31483\n31430\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 3\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.6 s\x1b[0m)\navg latency: 2167\nfinal throughput: 9.2K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.6 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  31430 killed
+Follower 2  :::  31483 killed
+Leader  :::  31522 killed
+Run with thread count 20 done!
+
+Experiments done!
+
+Killing all benchmark process...
+raft_bench  :::  31430 killed
+raft_bench  :::  31483 killed
+raft_bench  :::  31522 killed
+
+
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+
+Throughput (Kops/s)
+4.4
+11.8
+14.9
+7.0
+5.1
+21.1
+5.6
+6.0
+9.0
+9.2
+
+Average Latency (us)
+455
+338
+401
+1135
+1944
+567
+2509
+2678
+1989
+2167
+
