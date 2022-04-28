@@ -1,0 +1,1260 @@
+2022-04-28T03:49:42.638_158+00:00 [79214] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:49:42.639_543+00:00 [79214] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:49:42.639_575+00:00 [79214] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:49:42.639_583+00:00 [79214] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:49:42.639_605+00:00 [79214] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:49:42.639_609+00:00 [79214] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:49:42.639_612+00:00 [79214] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:49:42.639_645+00:00 [79214] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:49:42.639_791+00:00 [79250] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:49:43.697_854+00:00 [79221] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:49:43.697_864+00:00 [79221] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:49:43.697_879+00:00 [79221] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:49:43.697_889+00:00 [79221] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:49:43.697_896+00:00 [79221] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:49:43.697_900+00:00 [79221] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:49:43.697_919+00:00 [79221] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:49:43.697_972+00:00 [79249] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:49:43.697_979+00:00 [79249] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:49:43.697_990+00:00 [79249] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:50:04.463_961+00:00 [79221] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:50:04.463_985+00:00 [79221] [INFO] session 1 got connection from 127.0.0.1:43984 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:50:04.464_092+00:00 [79221] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:50:04.464_115+00:00 [79221] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:50:04.464_175+00:00 [79221] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:50:04.464_179+00:00 [79221] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:50:04.464_181+00:00 [79221] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:50:04.464_186+00:00 [79221] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:50:04.464_432+00:00 [79221] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:43984 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:50:04.714_541+00:00 [79221] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:50:04.714_551+00:00 [79221] [INFO] session 2 got connection from 127.0.0.1:43986 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:50:04.714_622+00:00 [79221] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:50:04.714_625+00:00 [79221] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:50:04.714_798+00:00 [79236] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:50:04.714_803+00:00 [79236] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:50:04.714_868+00:00 [79249] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:50:04.714_871+00:00 [79249] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:50:04.714_878+00:00 [79249] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:50:04.714_887+00:00 [79249] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:50:04.714_891+00:00 [79249] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:50:04.714_908+00:00 [79249] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:50:04.714_984+00:00 [79249] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:50:04.714_994+00:00 [79249] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:50:04.715_037+00:00 [79249] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:50:04.715_040+00:00 [79249] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:50:04.715_045+00:00 [79249] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:51:00.181_090+00:00 [79406] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:51:00.183_154+00:00 [79406] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:51:00.183_190+00:00 [79406] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:51:00.183_196+00:00 [79406] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:51:00.183_219+00:00 [79406] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:51:00.183_223+00:00 [79406] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:51:00.183_226+00:00 [79406] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:51:00.183_258+00:00 [79406] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:51:00.183_798+00:00 [79442] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:51:02.149_479+00:00 [79413] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:51:02.149_491+00:00 [79413] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:51:02.149_505+00:00 [79413] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:51:02.149_516+00:00 [79413] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:51:02.149_522+00:00 [79413] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:51:02.149_526+00:00 [79413] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:51:02.149_544+00:00 [79413] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:51:02.149_598+00:00 [79441] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:51:02.149_607+00:00 [79441] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:51:02.149_616+00:00 [79441] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:51:22.251_201+00:00 [79413] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:51:22.251_222+00:00 [79413] [INFO] session 1 got connection from 127.0.0.1:43988 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:51:22.251_317+00:00 [79413] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:51:22.251_336+00:00 [79413] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:51:22.251_388+00:00 [79413] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:51:22.251_391+00:00 [79413] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:51:22.251_393+00:00 [79413] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:51:22.251_397+00:00 [79413] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:51:22.251_629+00:00 [79413] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:43988 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:51:22.501_803+00:00 [79413] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:51:22.501_814+00:00 [79413] [INFO] session 2 got connection from 127.0.0.1:43990 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:51:22.501_897+00:00 [79413] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:51:22.501_901+00:00 [79413] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:51:22.502_043+00:00 [79413] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:51:22.502_047+00:00 [79413] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:51:22.502_114+00:00 [79441] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:51:22.502_118+00:00 [79441] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:51:22.502_126+00:00 [79441] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:51:22.502_138+00:00 [79441] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:51:22.502_142+00:00 [79441] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:51:22.502_162+00:00 [79441] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:51:22.502_259+00:00 [79441] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:51:22.502_272+00:00 [79441] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:51:22.502_325+00:00 [79441] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:51:22.502_330+00:00 [79441] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:51:22.502_337+00:00 [79441] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:52:17.182_015+00:00 [79547] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:52:17.184_161+00:00 [79547] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:52:17.184_201+00:00 [79547] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:52:17.184_208+00:00 [79547] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:52:17.184_236+00:00 [79547] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:52:17.184_241+00:00 [79547] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:52:17.184_245+00:00 [79547] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:52:17.184_276+00:00 [79547] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:52:17.184_832+00:00 [79583] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:52:18.853_510+00:00 [79554] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:52:18.853_522+00:00 [79554] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:52:18.853_537+00:00 [79554] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:52:18.853_548+00:00 [79554] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:52:18.853_555+00:00 [79554] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:52:18.853_559+00:00 [79554] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:52:18.853_578+00:00 [79554] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:52:18.853_631+00:00 [79582] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:52:18.853_639+00:00 [79582] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:52:18.853_649+00:00 [79582] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:52:38.505_414+00:00 [79554] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:52:38.505_436+00:00 [79554] [INFO] session 1 got connection from 127.0.0.1:43992 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:52:38.505_548+00:00 [79554] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:52:38.505_570+00:00 [79554] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:52:38.505_634+00:00 [79554] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:52:38.505_638+00:00 [79554] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:52:38.505_640+00:00 [79554] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:52:38.505_645+00:00 [79554] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:52:38.505_886+00:00 [79554] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:43992 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:52:38.756_081+00:00 [79554] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:52:38.756_092+00:00 [79554] [INFO] session 2 got connection from 127.0.0.1:43994 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:52:38.756_173+00:00 [79554] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:52:38.756_177+00:00 [79554] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:52:38.756_305+00:00 [79554] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:52:38.756_309+00:00 [79554] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:52:38.756_374+00:00 [79582] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:52:38.756_377+00:00 [79582] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:52:38.756_385+00:00 [79582] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:52:38.756_396+00:00 [79582] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:52:38.756_400+00:00 [79582] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:52:38.756_420+00:00 [79582] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:52:38.756_513+00:00 [79582] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:52:38.756_526+00:00 [79582] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:52:38.756_584+00:00 [79582] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:52:38.756_588+00:00 [79582] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:52:38.756_595+00:00 [79582] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:53:35.182_123+00:00 [79690] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:53:35.184_188+00:00 [79690] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:53:35.184_220+00:00 [79690] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:53:35.184_226+00:00 [79690] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:53:35.184_250+00:00 [79690] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:53:35.184_254+00:00 [79690] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:53:35.184_256+00:00 [79690] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:53:35.184_287+00:00 [79690] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:53:35.184_441+00:00 [79726] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:53:36.735_515+00:00 [79697] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:53:36.735_527+00:00 [79697] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:53:36.735_544+00:00 [79697] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:53:36.735_556+00:00 [79697] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:53:36.735_563+00:00 [79697] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:53:36.735_567+00:00 [79697] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:53:36.735_587+00:00 [79697] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:53:36.735_644+00:00 [79725] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:53:36.735_653+00:00 [79725] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:53:36.735_668+00:00 [79725] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:53:56.503_589+00:00 [79697] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:53:56.503_612+00:00 [79697] [INFO] session 1 got connection from 127.0.0.1:43996 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:53:56.503_718+00:00 [79697] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:53:56.503_742+00:00 [79697] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:53:56.503_803+00:00 [79697] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:53:56.503_807+00:00 [79697] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:53:56.503_809+00:00 [79697] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:53:56.503_814+00:00 [79697] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:53:56.504_062+00:00 [79697] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:43996 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:53:56.754_178+00:00 [79697] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:53:56.754_189+00:00 [79697] [INFO] session 2 got connection from 127.0.0.1:43998 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:53:56.754_269+00:00 [79697] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:53:56.754_273+00:00 [79697] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:53:56.754_398+00:00 [79697] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:53:56.754_402+00:00 [79697] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:53:56.754_467+00:00 [79725] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:53:56.754_470+00:00 [79725] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:53:56.754_478+00:00 [79725] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:53:56.754_489+00:00 [79725] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:53:56.754_494+00:00 [79725] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:53:56.754_514+00:00 [79725] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:53:56.754_635+00:00 [79725] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:53:56.754_653+00:00 [79725] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:53:56.754_731+00:00 [79725] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:53:56.754_736+00:00 [79725] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:53:56.754_744+00:00 [79725] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:54:52.183_018+00:00 [79919] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:54:52.184_416+00:00 [79919] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:54:52.184_449+00:00 [79919] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:54:52.184_454+00:00 [79919] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:54:52.184_478+00:00 [79919] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:54:52.184_482+00:00 [79919] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:54:52.184_485+00:00 [79919] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:54:52.184_514+00:00 [79919] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:54:52.184_662+00:00 [79955] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:54:54.177_818+00:00 [79926] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:54:54.177_828+00:00 [79926] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:54:54.177_843+00:00 [79926] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:54:54.177_863+00:00 [79926] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:54:54.177_869+00:00 [79926] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:54:54.177_874+00:00 [79926] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:54:54.177_892+00:00 [79926] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:54:54.177_943+00:00 [79954] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:54:54.177_951+00:00 [79954] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:54:54.177_961+00:00 [79954] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:55:14.009_283+00:00 [79926] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:55:14.009_300+00:00 [79926] [INFO] session 1 got connection from 127.0.0.1:44002 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:55:14.009_409+00:00 [79926] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:55:14.009_432+00:00 [79926] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:55:14.009_494+00:00 [79926] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:55:14.009_497+00:00 [79926] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:55:14.009_500+00:00 [79926] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:55:14.009_505+00:00 [79926] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:55:14.009_753+00:00 [79926] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44002 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:55:14.259_926+00:00 [79926] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:55:14.259_939+00:00 [79926] [INFO] session 2 got connection from 127.0.0.1:44004 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:55:14.260_024+00:00 [79926] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:55:14.260_028+00:00 [79926] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:55:14.260_171+00:00 [79926] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:55:14.260_176+00:00 [79926] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:55:14.260_245+00:00 [79954] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:55:14.260_249+00:00 [79954] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:55:14.260_257+00:00 [79954] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:55:14.260_272+00:00 [79954] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:55:14.260_277+00:00 [79954] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:55:14.260_301+00:00 [79954] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:55:14.260_416+00:00 [79954] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:55:14.260_429+00:00 [79954] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:55:14.260_490+00:00 [79954] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:55:14.260_495+00:00 [79954] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:55:14.260_504+00:00 [79954] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:56:09.185_433+00:00 [80140] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:56:09.186_936+00:00 [80140] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:56:09.186_978+00:00 [80140] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:56:09.186_981+00:00 [80140] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:56:09.187_012+00:00 [80140] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:56:09.187_016+00:00 [80140] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:56:09.187_019+00:00 [80140] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:56:09.187_051+00:00 [80140] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:56:09.187_221+00:00 [80176] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:56:10.606_279+00:00 [80147] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:56:10.606_291+00:00 [80147] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:56:10.606_306+00:00 [80147] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:56:10.606_317+00:00 [80147] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:56:10.606_324+00:00 [80147] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:56:10.606_328+00:00 [80147] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:56:10.606_349+00:00 [80147] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:56:10.606_406+00:00 [80175] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:56:10.606_415+00:00 [80175] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:56:10.606_426+00:00 [80175] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:56:30.748_856+00:00 [80147] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:56:30.748_879+00:00 [80147] [INFO] session 1 got connection from 127.0.0.1:44008 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:56:30.748_986+00:00 [80147] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:56:30.749_008+00:00 [80147] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:56:30.749_078+00:00 [80147] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:56:30.749_083+00:00 [80147] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:56:30.749_085+00:00 [80147] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:56:30.749_093+00:00 [80147] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:56:30.749_363+00:00 [80147] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44008 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:56:30.999_464+00:00 [80147] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:56:30.999_476+00:00 [80147] [INFO] session 2 got connection from 127.0.0.1:44010 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:56:30.999_559+00:00 [80147] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:56:30.999_563+00:00 [80147] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:56:30.999_690+00:00 [80147] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:56:30.999_694+00:00 [80147] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:56:30.999_759+00:00 [80175] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:56:30.999_762+00:00 [80175] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:56:30.999_771+00:00 [80175] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:56:30.999_782+00:00 [80175] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:56:30.999_786+00:00 [80175] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:56:30.999_809+00:00 [80175] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:56:30.999_906+00:00 [80175] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:56:30.999_918+00:00 [80175] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:56:30.999_970+00:00 [80175] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:56:30.999_973+00:00 [80175] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:56:30.999_980+00:00 [80175] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:57:26.178_742+00:00 [80376] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:57:26.180_183+00:00 [80376] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:57:26.180_216+00:00 [80376] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:57:26.180_220+00:00 [80376] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:57:26.180_242+00:00 [80376] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:57:26.180_246+00:00 [80376] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:57:26.180_249+00:00 [80376] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:57:26.180_279+00:00 [80376] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:57:26.180_423+00:00 [80412] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:57:27.633_510+00:00 [80383] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:57:27.633_521+00:00 [80383] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:57:27.633_536+00:00 [80383] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:57:27.633_554+00:00 [80383] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:57:27.633_560+00:00 [80383] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:57:27.633_564+00:00 [80383] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:57:27.633_582+00:00 [80383] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:57:27.633_637+00:00 [80411] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:57:27.633_645+00:00 [80411] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:57:27.633_654+00:00 [80411] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:57:48.251_221+00:00 [80383] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:57:48.251_242+00:00 [80383] [INFO] session 1 got connection from 127.0.0.1:44012 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:57:48.251_344+00:00 [80383] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:57:48.251_367+00:00 [80383] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:57:48.251_429+00:00 [80383] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:57:48.251_432+00:00 [80383] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:57:48.251_435+00:00 [80383] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:57:48.251_440+00:00 [80383] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:57:48.251_690+00:00 [80383] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44012 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:57:48.501_803+00:00 [80383] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:57:48.501_813+00:00 [80383] [INFO] session 2 got connection from 127.0.0.1:44014 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:57:48.502_139+00:00 [80383] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:57:48.502_144+00:00 [80383] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:57:48.502_274+00:00 [80383] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:57:48.502_279+00:00 [80383] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:57:48.502_344+00:00 [80411] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:57:48.502_348+00:00 [80411] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:57:48.502_357+00:00 [80411] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:57:48.502_368+00:00 [80411] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:57:48.502_372+00:00 [80411] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:57:48.502_394+00:00 [80411] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:57:48.502_483+00:00 [80411] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:57:48.502_494+00:00 [80411] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:57:48.502_545+00:00 [80411] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:57:48.502_549+00:00 [80411] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:57:48.502_557+00:00 [80411] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:58:43.185_192+00:00 [80600] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T03:58:43.186_616+00:00 [80600] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T03:58:43.186_651+00:00 [80600] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T03:58:43.186_656+00:00 [80600] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T03:58:43.186_708+00:00 [80600] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T03:58:43.186_713+00:00 [80600] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T03:58:43.186_716+00:00 [80600] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T03:58:43.186_750+00:00 [80600] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T03:58:43.186_920+00:00 [80636] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T03:58:44.238_979+00:00 [80607] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T03:58:44.238_991+00:00 [80607] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T03:58:44.239_007+00:00 [80607] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T03:58:44.239_018+00:00 [80607] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T03:58:44.239_024+00:00 [80607] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T03:58:44.239_028+00:00 [80607] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T03:58:44.239_046+00:00 [80607] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T03:58:44.239_098+00:00 [80635] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:58:44.239_106+00:00 [80635] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:58:44.239_116+00:00 [80635] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:59:05.261_429+00:00 [80607] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:59:05.261_450+00:00 [80607] [INFO] session 1 got connection from 127.0.0.1:44018 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:59:05.261_554+00:00 [80607] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T03:59:05.261_577+00:00 [80607] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:59:05.261_640+00:00 [80607] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:59:05.261_643+00:00 [80607] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T03:59:05.261_645+00:00 [80607] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:59:05.261_651+00:00 [80607] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:59:05.261_867+00:00 [80607] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44018 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T03:59:05.512_057+00:00 [80607] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T03:59:05.512_069+00:00 [80607] [INFO] session 2 got connection from 127.0.0.1:44020 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T03:59:05.512_156+00:00 [80607] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T03:59:05.512_160+00:00 [80607] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T03:59:05.512_289+00:00 [80607] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:59:05.512_293+00:00 [80607] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T03:59:05.512_359+00:00 [80635] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:59:05.512_363+00:00 [80635] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T03:59:05.512_371+00:00 [80635] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:59:05.512_382+00:00 [80635] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:59:05.512_386+00:00 [80635] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T03:59:05.512_407+00:00 [80635] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T03:59:05.512_499+00:00 [80635] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T03:59:05.512_514+00:00 [80635] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T03:59:05.512_575+00:00 [80635] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T03:59:05.512_580+00:00 [80635] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T03:59:05.512_588+00:00 [80635] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:00:01.183_051+00:00 [80753] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:00:01.184_443+00:00 [80753] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:00:01.184_474+00:00 [80753] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:00:01.184_479+00:00 [80753] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:00:01.184_505+00:00 [80753] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:00:01.184_509+00:00 [80753] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:00:01.184_512+00:00 [80753] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:00:01.184_541+00:00 [80753] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:00:01.184_694+00:00 [80789] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:00:02.768_760+00:00 [80760] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:00:02.768_773+00:00 [80760] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:00:02.768_789+00:00 [80760] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:00:02.768_801+00:00 [80760] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:00:02.768_808+00:00 [80760] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:00:02.768_812+00:00 [80760] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:00:02.768_833+00:00 [80760] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:00:02.768_893+00:00 [80788] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:00:02.768_901+00:00 [80788] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:00:02.768_910+00:00 [80788] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:00:22.508_775+00:00 [80760] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:00:22.508_791+00:00 [80760] [INFO] session 1 got connection from 127.0.0.1:44022 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:00:22.508_898+00:00 [80760] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:00:22.508_922+00:00 [80760] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:00:22.508_983+00:00 [80760] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:00:22.508_987+00:00 [80760] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:00:22.508_989+00:00 [80760] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:00:22.508_994+00:00 [80760] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:00:22.509_245+00:00 [80760] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44022 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:00:22.759_387+00:00 [80760] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:00:22.759_399+00:00 [80760] [INFO] session 2 got connection from 127.0.0.1:44024 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:00:22.759_484+00:00 [80760] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:00:22.759_488+00:00 [80760] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:00:22.759_608+00:00 [80760] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:00:22.759_612+00:00 [80760] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:00:22.759_678+00:00 [80788] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:00:22.759_682+00:00 [80788] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:00:22.759_690+00:00 [80788] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:00:22.759_702+00:00 [80788] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:00:22.759_706+00:00 [80788] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:00:22.759_726+00:00 [80788] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:00:22.759_824+00:00 [80788] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:00:22.759_842+00:00 [80788] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:00:22.759_920+00:00 [80788] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:00:22.759_924+00:00 [80788] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:00:22.759_931+00:00 [80788] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:01:18.184_169+00:00 [80910] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:01:18.185_550+00:00 [80910] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:01:18.185_581+00:00 [80910] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:01:18.185_591+00:00 [80910] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:01:18.185_615+00:00 [80910] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:01:18.185_619+00:00 [80910] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:01:18.185_622+00:00 [80910] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:01:18.185_651+00:00 [80910] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:01:18.185_795+00:00 [80946] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:01:20.030_853+00:00 [80917] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:01:20.030_864+00:00 [80917] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:01:20.030_878+00:00 [80917] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:01:20.030_889+00:00 [80917] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:01:20.030_895+00:00 [80917] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:01:20.030_898+00:00 [80917] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:01:20.030_918+00:00 [80917] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:01:20.030_971+00:00 [80945] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:01:20.030_979+00:00 [80945] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:01:20.030_989+00:00 [80945] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:01:39.760_368+00:00 [80917] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:01:39.760_391+00:00 [80917] [INFO] session 1 got connection from 127.0.0.1:44026 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:01:39.760_497+00:00 [80917] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:01:39.760_520+00:00 [80917] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:01:39.760_581+00:00 [80917] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:01:39.760_585+00:00 [80917] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:01:39.760_587+00:00 [80917] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:01:39.760_592+00:00 [80917] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:01:39.760_884+00:00 [80917] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44026 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:01:40.010_967+00:00 [80917] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:01:40.010_978+00:00 [80917] [INFO] session 2 got connection from 127.0.0.1:44028 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:01:40.011_058+00:00 [80917] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:01:40.011_062+00:00 [80917] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:01:40.011_189+00:00 [80917] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:01:40.011_193+00:00 [80917] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:01:40.011_259+00:00 [80945] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:01:40.011_262+00:00 [80945] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:01:40.011_270+00:00 [80945] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:01:40.011_281+00:00 [80945] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:01:40.011_285+00:00 [80945] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:01:40.011_306+00:00 [80945] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:01:40.011_408+00:00 [80945] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:01:40.011_421+00:00 [80945] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:01:40.011_478+00:00 [80945] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:01:40.011_483+00:00 [80945] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:01:40.011_491+00:00 [80945] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:08:08.133_449+00:00 [81223] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:08:08.134_809+00:00 [81223] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:08:08.134_843+00:00 [81223] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:08:08.134_850+00:00 [81223] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:08:08.134_871+00:00 [81223] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:08:08.134_875+00:00 [81223] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:08:08.134_878+00:00 [81223] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:08:08.134_908+00:00 [81223] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:08:08.135_060+00:00 [81259] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:08:09.536_102+00:00 [81230] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:08:09.536_113+00:00 [81230] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:08:09.536_128+00:00 [81230] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:08:09.536_139+00:00 [81230] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:08:09.536_145+00:00 [81230] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:08:09.536_149+00:00 [81230] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:08:09.536_167+00:00 [81230] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:08:09.536_234+00:00 [81258] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:08:09.536_243+00:00 [81258] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:08:09.536_253+00:00 [81258] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:08:30.205_744+00:00 [81230] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:08:30.205_764+00:00 [81230] [INFO] session 1 got connection from 127.0.0.1:44030 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:08:30.205_862+00:00 [81230] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:08:30.205_882+00:00 [81230] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:08:30.205_936+00:00 [81230] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:08:30.205_939+00:00 [81230] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:08:30.205_941+00:00 [81230] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:08:30.205_945+00:00 [81230] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:08:30.206_202+00:00 [81230] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44030 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:08:30.456_328+00:00 [81230] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:08:30.456_339+00:00 [81230] [INFO] session 2 got connection from 127.0.0.1:44034 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:08:30.456_420+00:00 [81230] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:08:30.456_424+00:00 [81230] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:08:30.456_539+00:00 [81230] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:08:30.456_544+00:00 [81230] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:08:30.456_608+00:00 [81258] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:08:30.456_611+00:00 [81258] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:08:30.456_619+00:00 [81258] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:08:30.456_631+00:00 [81258] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:08:30.456_634+00:00 [81258] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:08:30.456_654+00:00 [81258] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:08:30.456_747+00:00 [81258] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:08:30.456_764+00:00 [81258] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:08:30.456_826+00:00 [81258] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:08:30.456_831+00:00 [81258] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:08:30.456_840+00:00 [81258] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:09:25.181_188+00:00 [81409] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:09:25.183_280+00:00 [81409] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:09:25.183_313+00:00 [81409] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:09:25.183_322+00:00 [81409] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:09:25.183_347+00:00 [81409] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:09:25.183_351+00:00 [81409] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:09:25.183_353+00:00 [81409] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:09:25.183_389+00:00 [81409] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:09:25.183_540+00:00 [81445] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:09:27.169_620+00:00 [81416] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:09:27.169_632+00:00 [81416] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:09:27.169_648+00:00 [81416] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:09:27.169_659+00:00 [81416] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:09:27.169_667+00:00 [81416] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:09:27.169_671+00:00 [81416] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:09:27.169_691+00:00 [81416] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:09:27.169_749+00:00 [81444] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:09:27.169_758+00:00 [81444] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:09:27.169_769+00:00 [81444] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:09:46.506_817+00:00 [81416] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:09:46.506_840+00:00 [81416] [INFO] session 1 got connection from 127.0.0.1:44036 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:09:46.506_949+00:00 [81416] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:09:46.506_971+00:00 [81416] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:09:46.507_032+00:00 [81416] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:09:46.507_036+00:00 [81416] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:09:46.507_038+00:00 [81416] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:09:46.507_044+00:00 [81416] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:09:46.507_287+00:00 [81416] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44036 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:09:46.757_485+00:00 [81416] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:09:46.757_496+00:00 [81416] [INFO] session 2 got connection from 127.0.0.1:44038 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:09:46.757_578+00:00 [81416] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:09:46.757_582+00:00 [81416] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:09:46.757_713+00:00 [81416] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:09:46.757_717+00:00 [81416] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:09:46.757_781+00:00 [81444] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:09:46.757_784+00:00 [81444] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:09:46.757_792+00:00 [81444] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:09:46.757_804+00:00 [81444] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:09:46.757_808+00:00 [81444] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:09:46.757_827+00:00 [81444] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:09:46.757_921+00:00 [81444] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:09:46.757_934+00:00 [81444] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:09:46.758_010+00:00 [81444] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:09:46.758_015+00:00 [81444] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:09:46.758_025+00:00 [81444] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:10:42.182_124+00:00 [81559] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:10:42.183_650+00:00 [81559] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:10:42.183_690+00:00 [81559] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:10:42.183_694+00:00 [81559] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:10:42.183_717+00:00 [81559] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:10:42.183_721+00:00 [81559] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:10:42.183_725+00:00 [81559] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:10:42.183_754+00:00 [81559] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:10:42.183_907+00:00 [81595] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:10:43.858_961+00:00 [81566] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:10:43.858_973+00:00 [81566] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:10:43.858_988+00:00 [81566] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:10:43.858_998+00:00 [81566] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:10:43.859_004+00:00 [81566] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:10:43.859_008+00:00 [81566] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:10:43.859_027+00:00 [81566] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:10:43.859_079+00:00 [81594] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:10:43.859_087+00:00 [81594] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:10:43.859_096+00:00 [81594] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:11:03.755_813+00:00 [81566] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:11:03.755_836+00:00 [81566] [INFO] session 1 got connection from 127.0.0.1:44040 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:11:03.755_946+00:00 [81566] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:11:03.755_970+00:00 [81566] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:11:03.756_031+00:00 [81566] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:11:03.756_035+00:00 [81566] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:11:03.756_038+00:00 [81566] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:11:03.756_044+00:00 [81566] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:11:03.756_287+00:00 [81566] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44040 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:11:04.006_349+00:00 [81566] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:11:04.006_360+00:00 [81566] [INFO] session 2 got connection from 127.0.0.1:44042 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:11:04.006_503+00:00 [81566] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:11:04.006_510+00:00 [81566] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:11:04.006_656+00:00 [81566] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:11:04.006_682+00:00 [81566] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:11:04.006_759+00:00 [81594] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:11:04.006_763+00:00 [81594] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:11:04.006_773+00:00 [81594] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:11:04.006_785+00:00 [81594] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:11:04.006_789+00:00 [81594] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:11:04.006_811+00:00 [81594] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:11:04.006_920+00:00 [81594] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:11:04.006_938+00:00 [81594] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:11:04.007_011+00:00 [81594] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:11:04.007_016+00:00 [81594] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:11:04.007_025+00:00 [81594] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:11:59.182_499+00:00 [81701] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:11:59.183_904+00:00 [81701] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:11:59.183_937+00:00 [81701] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:11:59.183_942+00:00 [81701] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:11:59.183_970+00:00 [81701] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:11:59.183_973+00:00 [81701] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:11:59.183_976+00:00 [81701] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:11:59.184_007+00:00 [81701] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:11:59.184_165+00:00 [81737] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:12:00.614_224+00:00 [81708] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:12:00.614_236+00:00 [81708] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:12:00.614_252+00:00 [81708] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:12:00.614_263+00:00 [81708] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:12:00.614_270+00:00 [81708] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:12:00.614_274+00:00 [81708] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:12:00.614_293+00:00 [81708] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:12:00.614_344+00:00 [81736] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:12:00.614_351+00:00 [81736] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:12:00.614_362+00:00 [81736] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:12:20.507_945+00:00 [81708] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:12:20.507_968+00:00 [81708] [INFO] session 1 got connection from 127.0.0.1:44046 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:12:20.508_074+00:00 [81708] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:12:20.508_097+00:00 [81708] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:12:20.508_159+00:00 [81708] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:12:20.508_162+00:00 [81708] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:12:20.508_164+00:00 [81708] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:12:20.508_170+00:00 [81708] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:12:20.508_411+00:00 [81708] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44046 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:12:20.758_618+00:00 [81708] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:12:20.758_629+00:00 [81708] [INFO] session 2 got connection from 127.0.0.1:44048 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:12:20.758_724+00:00 [81708] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:12:20.758_728+00:00 [81708] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:12:20.758_853+00:00 [81708] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:12:20.758_858+00:00 [81708] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:12:20.758_922+00:00 [81736] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:12:20.758_925+00:00 [81736] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:12:20.758_933+00:00 [81736] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:12:20.758_945+00:00 [81736] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:12:20.758_949+00:00 [81736] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:12:20.758_968+00:00 [81736] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:12:20.759_064+00:00 [81736] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:12:20.759_076+00:00 [81736] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:12:20.759_137+00:00 [81736] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:12:20.759_141+00:00 [81736] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:12:20.759_150+00:00 [81736] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:13:16.178_768+00:00 [81848] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:13:16.180_145+00:00 [81848] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:13:16.180_181+00:00 [81848] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:13:16.180_185+00:00 [81848] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:13:16.180_206+00:00 [81848] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:13:16.180_210+00:00 [81848] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:13:16.180_213+00:00 [81848] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:13:16.180_244+00:00 [81848] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:13:16.180_391+00:00 [81884] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:13:17.660_559+00:00 [81855] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:13:17.660_584+00:00 [81855] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:13:17.660_620+00:00 [81855] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:13:17.660_648+00:00 [81855] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:13:17.660_663+00:00 [81855] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:13:17.660_675+00:00 [81855] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:13:17.660_726+00:00 [81855] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:13:17.660_864+00:00 [81883] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:13:17.660_890+00:00 [81883] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:13:17.660_917+00:00 [81883] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:13:37.754_903+00:00 [81855] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:13:37.754_924+00:00 [81855] [INFO] session 1 got connection from 127.0.0.1:44050 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:13:37.755_028+00:00 [81855] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:13:37.755_051+00:00 [81855] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:13:37.755_109+00:00 [81855] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:13:37.755_112+00:00 [81855] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:13:37.755_114+00:00 [81855] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:13:37.755_120+00:00 [81855] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:13:37.755_359+00:00 [81855] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44050 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:13:38.005_435+00:00 [81855] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:13:38.005_446+00:00 [81855] [INFO] session 2 got connection from 127.0.0.1:44052 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:13:38.005_531+00:00 [81855] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:13:38.005_535+00:00 [81855] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:13:38.005_662+00:00 [81855] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:13:38.005_666+00:00 [81855] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:13:38.005_731+00:00 [81883] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:13:38.005_735+00:00 [81883] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:13:38.005_743+00:00 [81883] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:13:38.005_755+00:00 [81883] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:13:38.005_759+00:00 [81883] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:13:38.005_780+00:00 [81883] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:13:38.005_877+00:00 [81883] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:13:38.005_890+00:00 [81883] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:13:38.005_950+00:00 [81883] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:13:38.005_955+00:00 [81883] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:13:38.005_964+00:00 [81883] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:14:33.176_683+00:00 [81995] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:14:33.178_297+00:00 [81995] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:14:33.178_331+00:00 [81995] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:14:33.178_340+00:00 [81995] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:14:33.178_364+00:00 [81995] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:14:33.178_367+00:00 [81995] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:14:33.178_371+00:00 [81995] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:14:33.178_408+00:00 [81995] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:14:33.178_561+00:00 [82031] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:14:34.642_649+00:00 [82002] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:14:34.642_679+00:00 [82002] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:14:34.642_698+00:00 [82002] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:14:34.642_710+00:00 [82002] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:14:34.642_716+00:00 [82002] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:14:34.642_720+00:00 [82002] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:14:34.642_741+00:00 [82002] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:14:34.642_797+00:00 [82030] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:14:34.642_805+00:00 [82030] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:14:34.642_814+00:00 [82030] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:14:54.990_357+00:00 [82002] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:14:54.990_380+00:00 [82002] [INFO] session 1 got connection from 127.0.0.1:44054 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:14:54.990_487+00:00 [82002] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:14:54.990_509+00:00 [82002] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:14:54.990_567+00:00 [82002] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:14:54.990_570+00:00 [82002] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:14:54.990_572+00:00 [82002] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:14:54.990_577+00:00 [82002] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:14:54.990_839+00:00 [82002] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44054 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:14:55.240_962+00:00 [82002] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:14:55.240_974+00:00 [82002] [INFO] session 2 got connection from 127.0.0.1:44056 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:14:55.241_058+00:00 [82002] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:14:55.241_062+00:00 [82002] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:14:55.241_190+00:00 [82002] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:14:55.241_195+00:00 [82002] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:14:55.241_261+00:00 [82030] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:14:55.241_264+00:00 [82030] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:14:55.241_273+00:00 [82030] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:14:55.241_285+00:00 [82030] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:14:55.241_289+00:00 [82030] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:14:55.241_309+00:00 [82030] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:14:55.241_408+00:00 [82030] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:14:55.241_420+00:00 [82030] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:14:55.241_483+00:00 [82030] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:14:55.241_488+00:00 [82030] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:14:55.241_496+00:00 [82030] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:15:50.182_430+00:00 [82145] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:15:50.183_837+00:00 [82145] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:15:50.183_872+00:00 [82145] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:15:50.183_878+00:00 [82145] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:15:50.183_901+00:00 [82145] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:15:50.183_905+00:00 [82145] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:15:50.183_908+00:00 [82145] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:15:50.183_941+00:00 [82145] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:15:50.184_095+00:00 [82181] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:15:52.202_151+00:00 [82152] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:15:52.202_162+00:00 [82152] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:15:52.202_179+00:00 [82152] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:15:52.202_190+00:00 [82152] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:15:52.202_197+00:00 [82152] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:15:52.202_201+00:00 [82152] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:15:52.202_221+00:00 [82152] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:15:52.202_275+00:00 [82180] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:15:52.202_283+00:00 [82180] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:15:52.202_293+00:00 [82180] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:16:11.504_640+00:00 [82152] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:16:11.504_664+00:00 [82152] [INFO] session 1 got connection from 127.0.0.1:44060 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:16:11.504_768+00:00 [82152] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:16:11.504_792+00:00 [82152] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:16:11.504_853+00:00 [82152] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:16:11.504_857+00:00 [82152] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:16:11.504_859+00:00 [82152] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:16:11.504_865+00:00 [82152] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:16:11.505_363+00:00 [82152] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44060 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:16:11.755_274+00:00 [82152] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:16:11.755_284+00:00 [82152] [INFO] session 2 got connection from 127.0.0.1:44062 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:16:11.755_354+00:00 [82152] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:16:11.755_358+00:00 [82152] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:16:11.755_476+00:00 [82152] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:16:11.755_480+00:00 [82152] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:16:11.755_538+00:00 [82180] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:16:11.755_541+00:00 [82180] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:16:11.755_547+00:00 [82180] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:16:11.755_557+00:00 [82180] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:16:11.755_560+00:00 [82180] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:16:11.755_577+00:00 [82180] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:16:11.755_656+00:00 [82180] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:16:11.755_667+00:00 [82180] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:16:11.755_710+00:00 [82180] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:16:11.755_712+00:00 [82180] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:16:11.755_718+00:00 [82180] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:17:07.183_133+00:00 [82299] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:17:07.184_785+00:00 [82299] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:17:07.184_826+00:00 [82299] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:17:07.184_831+00:00 [82299] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:17:07.184_858+00:00 [82299] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:17:07.184_863+00:00 [82299] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:17:07.184_866+00:00 [82299] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:17:07.184_900+00:00 [82299] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:17:07.185_073+00:00 [82335] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:17:08.978_101+00:00 [82306] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:17:08.978_112+00:00 [82306] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:17:08.978_128+00:00 [82306] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:17:08.978_139+00:00 [82306] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:17:08.978_146+00:00 [82306] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:17:08.978_150+00:00 [82306] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:17:08.978_168+00:00 [82306] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:17:08.978_221+00:00 [82334] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:17:08.978_229+00:00 [82334] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:17:08.978_239+00:00 [82334] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:17:29.009_539+00:00 [82306] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:17:29.009_561+00:00 [82306] [INFO] session 1 got connection from 127.0.0.1:44064 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:17:29.009_665+00:00 [82306] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:17:29.009_687+00:00 [82306] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:17:29.009_747+00:00 [82306] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:17:29.009_750+00:00 [82306] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:17:29.009_752+00:00 [82306] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:17:29.009_758+00:00 [82306] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:17:29.010_007+00:00 [82306] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44064 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:17:29.260_281+00:00 [82306] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:17:29.260_293+00:00 [82306] [INFO] session 2 got connection from 127.0.0.1:44066 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:17:29.260_377+00:00 [82306] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:17:29.260_381+00:00 [82306] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:17:29.260_501+00:00 [82306] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:17:29.260_505+00:00 [82306] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:17:29.260_571+00:00 [82334] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:17:29.260_574+00:00 [82334] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:17:29.260_583+00:00 [82334] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:17:29.260_594+00:00 [82334] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:17:29.260_598+00:00 [82334] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:17:29.260_618+00:00 [82334] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:17:29.260_714+00:00 [82334] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:17:29.260_730+00:00 [82334] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:17:29.260_795+00:00 [82334] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:17:29.260_799+00:00 [82334] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:17:29.260_808+00:00 [82334] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:18:24.178_877+00:00 [82453] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:18:24.180_955+00:00 [82453] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:18:24.180_997+00:00 [82453] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:18:24.181_002+00:00 [82453] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:18:24.181_031+00:00 [82453] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:18:24.181_034+00:00 [82453] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:18:24.181_037+00:00 [82453] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:18:24.181_068+00:00 [82453] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:18:24.181_628+00:00 [82489] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:18:25.909_291+00:00 [82460] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:18:25.909_303+00:00 [82460] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:18:25.909_318+00:00 [82460] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:18:25.909_328+00:00 [82460] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:18:25.909_335+00:00 [82460] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:18:25.909_339+00:00 [82460] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:18:25.909_357+00:00 [82460] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:18:25.909_411+00:00 [82488] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:18:25.909_418+00:00 [82488] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:18:25.909_428+00:00 [82488] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:18:46.252_411+00:00 [82460] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:18:46.252_434+00:00 [82460] [INFO] session 1 got connection from 127.0.0.1:44068 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:18:46.252_539+00:00 [82460] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:18:46.252_561+00:00 [82460] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:18:46.252_621+00:00 [82460] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:18:46.252_625+00:00 [82460] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:18:46.252_627+00:00 [82460] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:18:46.252_632+00:00 [82460] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:18:46.252_855+00:00 [82460] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44068 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:18:46.503_078+00:00 [82460] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:18:46.503_089+00:00 [82460] [INFO] session 2 got connection from 127.0.0.1:44070 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:18:46.503_174+00:00 [82460] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:18:46.503_178+00:00 [82460] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:18:46.503_305+00:00 [82460] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:18:46.503_309+00:00 [82460] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:18:46.503_374+00:00 [82488] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:18:46.503_378+00:00 [82488] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:18:46.503_386+00:00 [82488] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:18:46.503_397+00:00 [82488] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:18:46.503_402+00:00 [82488] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:18:46.503_422+00:00 [82488] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:18:46.503_520+00:00 [82488] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:18:46.503_533+00:00 [82488] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:18:46.503_651+00:00 [82488] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:18:46.503_657+00:00 [82488] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:18:46.503_667+00:00 [82488] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:19:41.185_806+00:00 [82614] [====] Start logger: ./srv2.log (32 MB per file, up to 10 files)	[logger.cc:979, start()]
+2022-04-28T04:19:41.187_239+00:00 [82614] [INFO] Raft ASIO listener initiated, UNSECURED	[asio_service.cxx:749, asio_rpc_listener()]
+2022-04-28T04:19:41.187_272+00:00 [82614] [INFO] parameters: timeout 1000 - 2000, heartbeat 500, leadership expiry 10000, max batch 100, backoff 50, snapshot distance 100000, log sync stop gap 99999, reserved logs 10000000, client timeout 4000, auto forwarding ON, API call type BLOCKING, custom commit quorum size 0, custom election quorum size 0, snapshot receiver INCLUDED, leadership transfer wait time 0, grace period of lagging state machine 0, snapshot IO: BLOCKING, parallel log appending: OFF	[raft_server.cxx:352, apply_and_log_current_params()]
+2022-04-28T04:19:41.187_281+00:00 [82614] [INFO] new timeout range: 1000 -- 2000	[raft_server.cxx:326, update_rand_timeout()]
+2022-04-28T04:19:41.187_306+00:00 [82614] [INFO]    === INIT RAFT SERVER ===
+commit index 0
+term 0
+election timer allowed
+log store start 1, end 0
+config log idx 0, prev log idx 0	[raft_server.cxx:149, raft_server()]
+2022-04-28T04:19:41.187_310+00:00 [82614] [INFO] peer 2: DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, voting_member
+num peers: 0	[raft_server.cxx:242, raft_server()]
+2022-04-28T04:19:41.187_313+00:00 [82614] [INFO] global manager does not exist. will use local thread for commit and append	[raft_server.cxx:260, start_server()]
+2022-04-28T04:19:41.187_345+00:00 [82614] [INFO] wait for HB, for 50 + [1000, 2000] ms	[raft_server.cxx:285, start_server()]
+2022-04-28T04:19:41.187_507+00:00 [82650] [INFO] bg append_entries thread initiated	[handle_append_entries.cxx:49, append_entries_in_bg()]
+2022-04-28T04:19:43.072_587+00:00 [82621] [WARN] Election timeout, initiate leader election	[handle_timeout.cxx:286, handle_election_timeout()]
+2022-04-28T04:19:43.072_599+00:00 [82621] [INFO] [PRIORITY] decay, target 1 -> 1, mine 50	[handle_priority.cxx:211, decay_target_priority()]
+2022-04-28T04:19:43.072_613+00:00 [82621] [INFO] [ELECTION TIMEOUT] current role: follower, log last term 0, state term 0, target p 1, my p 50, hb dead, pre-vote NOT done	[handle_timeout.cxx:299, handle_election_timeout()]
+2022-04-28T04:19:43.072_625+00:00 [82621] [INFO] [VOTE INIT] my id 2, my role candidate, term 1, log idx 0, log term 0, priority (target 1 / mine 50)	[handle_vote.cxx:225, request_vote()]
+2022-04-28T04:19:43.072_631+00:00 [82621] [INFO] number of pending commit elements: 0	[raft_server.cxx:940, become_leader()]
+2022-04-28T04:19:43.072_635+00:00 [82621] [INFO] state machine commit index 0, precommit index 0, last log index 0	[raft_server.cxx:953, become_leader()]
+2022-04-28T04:19:43.072_653+00:00 [82621] [INFO] [BECOME LEADER] appended new config at 1	[raft_server.cxx:993, become_leader()]
+2022-04-28T04:19:43.072_707+00:00 [82649] [INFO] config at index 1 is committed, prev config log idx 0	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:19:43.072_720+00:00 [82649] [INFO] new config log idx 1, prev log idx 0, cur config log idx 0, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:19:43.072_730+00:00 [82649] [INFO] new configuration: log idx 1, prev log idx 0
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 2, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:20:02.761_945+00:00 [82621] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:20:02.761_966+00:00 [82621] [INFO] session 1 got connection from 127.0.0.1:44072 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:20:02.762_068+00:00 [82621] [INFO] got join cluster req from leader 1	[handle_join_leave.cxx:165, handle_join_cluster_req()]
+2022-04-28T04:20:02.762_091+00:00 [82621] [INFO] new config log idx 1, prev log idx 0, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:20:02.762_153+00:00 [82621] [INFO] server 1 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:20:02.762_157+00:00 [82621] [INFO] peer 2 cannot be found, no action for removing	[handle_commit.cxx:761, reconfigure()]
+2022-04-28T04:20:02.762_159+00:00 [82621] [INFO] add peer 1, tcp://localhost:12347, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:20:02.762_165+00:00 [82621] [INFO] new configuration: log idx 1, prev log idx 0
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:20:02.762_440+00:00 [82621] [ERRO] session 1 failed to read rpc header from socket 127.0.0.1:44072 due to error 2, End of file, ref count 1	[asio_service.cxx:315, operator()()]
+2022-04-28T04:20:03.012_667+00:00 [82621] [INFO] receive a incoming rpc connection	[asio_service.cxx:809, handle_accept()]
+2022-04-28T04:20:03.012_678+00:00 [82621] [INFO] session 2 got connection from 127.0.0.1:44074 (as a server)	[asio_service.cxx:248, prepare_handshake()]
+2022-04-28T04:20:03.012_762+00:00 [82621] [INFO] [LOG XX] req log idx: 3, req log term: 1, my last log idx: 1, my log (3) term: 0	[handle_append_entries.cxx:570, handle_append_entries()]
+2022-04-28T04:20:03.012_766+00:00 [82621] [INFO] deny, req term 1, my term 1, req log idx 3, my log idx 1	[handle_append_entries.cxx:582, handle_append_entries()]
+2022-04-28T04:20:03.012_893+00:00 [82621] [INFO] receive a config change from leader at 2	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:20:03.012_898+00:00 [82621] [INFO] receive a config change from leader at 3	[handle_append_entries.cxx:726, handle_append_entries()]
+2022-04-28T04:20:03.012_966+00:00 [82649] [INFO] config at index 1 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:20:03.012_969+00:00 [82649] [INFO] skipped config 1, latest config 1	[handle_commit.cxx:405, commit_conf()]
+2022-04-28T04:20:03.012_978+00:00 [82649] [INFO] config at index 2 is committed, prev config log idx 1	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:20:03.012_989+00:00 [82649] [INFO] new config log idx 2, prev log idx 1, cur config log idx 1, prev log idx 0	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:20:03.012_993+00:00 [82649] [INFO] now this node is the part of cluster, catch-up process is done, clearing the flag	[handle_commit.cxx:624, reconfigure()]
+2022-04-28T04:20:03.013_014+00:00 [82649] [INFO] new configuration: log idx 2, prev log idx 1
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
+2022-04-28T04:20:03.013_110+00:00 [82649] [INFO] config at index 3 is committed, prev config log idx 2	[handle_commit.cxx:396, commit_conf()]
+2022-04-28T04:20:03.013_123+00:00 [82649] [INFO] new config log idx 3, prev log idx 2, cur config log idx 2, prev log idx 1	[handle_commit.cxx:589, reconfigure()]
+2022-04-28T04:20:03.013_182+00:00 [82649] [INFO] server 3 is added to cluster	[handle_commit.cxx:667, reconfigure()]
+2022-04-28T04:20:03.013_187+00:00 [82649] [INFO] add peer 3, tcp://localhost:12346, voting member	[handle_commit.cxx:766, reconfigure()]
+2022-04-28T04:20:03.013_195+00:00 [82649] [INFO] new configuration: log idx 3, prev log idx 2
+peer 1, DC ID 1, tcp://localhost:12347, voting member, 50
+peer 2, DC ID 1, tcp://localhost:12345, voting member, 50
+peer 3, DC ID 1, tcp://localhost:12346, voting member, 50
+my id: 2, leader: 1, term: 1	[handle_commit.cxx:809, reconfigure()]
