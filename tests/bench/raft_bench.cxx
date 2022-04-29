@@ -338,7 +338,7 @@ void print_config(const bench_config& config) {
     _msg("-----\n");
     _msg("server id: %zu\n", config.srv_id_);
     _msg("run duration: %zu seconds\n", config.duration_);
-    if (config.srv_id_ == 1 || config.srv_id_ == 3) {
+    if (config.srv_id_ == 1) {
         _msg("traffic: %zu ops/sec\n", config.iops_);
         _msg("%zu threads\n", config.num_threads_);
         _msg("payload size: %zu bytes\n", config.payload_size_);
@@ -383,32 +383,16 @@ int bench_main(const bench_config& config) {
     CHK_Z( init_raft(stuff) );
     _msg("-----\n");
 
-    while (stuff.server_id_ == 2) {
+    while (stuff.server_id_ > 1) {
         // Follower, just sleep
         // TestSuite::sleep_sec(config.duration_, "ready");
         TestSuite::sleep_sec(10, "ready");
-        std::cout << "my server id: " << stuff.server_id_ << std::endl << "leader id: " << stuff.raft_instance_->get_leader() << std::endl;
-    }
-
-    if (stuff.server_id_ == 3) {
-        // Follower, just sleep
-        // TestSuite::sleep_sec(config.duration_, "ready");
-        TestSuite::sleep_sec(30, "ready");
         std::cout << "my server id: " << stuff.server_id_ << std::endl << "leader id: " << stuff.raft_instance_->get_leader() << std::endl;
     }
 
     // Leader.
-    if (stuff.server_id_ == 1) {
-        CHK_Z( add_servers(stuff, config) );
-        _msg("-----\n");
-    }
-
-    while (stuff.server_id_ == 1) {
-        // Follower, just sleep
-        // TestSuite::sleep_sec(config.duration_, "ready");
-        TestSuite::sleep_sec(10, "ready");
-        std::cout << "my server id: " << stuff.server_id_ << std::endl << "leader id: " << stuff.raft_instance_->get_leader() << std::endl;
-    }
+    CHK_Z( add_servers(stuff, config) );
+    _msg("-----\n");
 
     char buf[512];
     FILE *cmd_pipe = popen("pidof raft_bench", "r");
@@ -468,7 +452,6 @@ int bench_main(const bench_config& config) {
     std::vector<size_t> col_width(3, 15);
     dd.setWidth(col_width);
     TestSuite::Timer duration_timer(config.duration_ * 1000);
-
     while (!duration_timer.timeout()) {
         TestSuite::sleep_ms(80);
         uint64_t cur_us = duration_timer.getTimeUs();
@@ -556,7 +539,7 @@ bench_config parse_config(int argc, char** argv) {
         exit(0);
     }
 
-    if (srv_id == 2) {
+    if (srv_id > 1) {
         // Follower.
         return bench_config(srv_id, my_endpoint, duration);
     }
@@ -582,10 +565,6 @@ bench_config parse_config(int argc, char** argv) {
     }
 
     bench_config ret(srv_id, my_endpoint, duration, iops, num_threads, payload_size);
-
-    if (srv_id == 3) {
-        return ret;
-    }
 
     for (int ii=7; ii<argc; ++ii) {
         std::string cur_endpoint = argv[ii];
