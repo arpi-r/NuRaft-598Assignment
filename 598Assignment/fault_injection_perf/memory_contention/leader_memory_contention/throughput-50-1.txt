@@ -1,0 +1,29 @@
+Fault injection: leader memory contention
+ERR:  b'mkdir: cannot create directory \xe2\x80\x98/sys/fs/cgroup/memory/db\xe2\x80\x99: File exists\n'
+Running performance experiments
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  12 client threads ...
+memory contention - leader ... 
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n12 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ..... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 22621 22544 22449\n\n22621\n22544\n22449\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\n\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160340\x1b[0m\n      thread: \x1b[33m9387\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160403\x1b[0m\n      thread: \x1b[33m02dd\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160608\x1b[0m\n      thread: \x1b[33m7b14\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160759\x1b[0m\n      thread: \x1b[33m9ace\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160798\x1b[0m\n      thread: \x1b[33mef1e\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160828\x1b[0m\n      thread: \x1b[33mc509\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160854\x1b[0m\n      thread: \x1b[33m1e34\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160879\x1b[0m\n      thread: \x1b[33m1104\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160903\x1b[0m\n      thread: \x1b[33m2432\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160927\x1b[0m\n      thread: \x1b[33m1d54\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160952\x1b[0m\n      thread: \x1b[33mcb51\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\n\n        time: \x1b[1;30m2022-04-29 22:13:11.160990\x1b[0m\n      thread: \x1b[33m3f42\x1b[0m\n          in: \x1b[36mworker_func()\x1b[0m\n          at: \x1b[32m/home/azureuser/NuRaft-598Assignment/tests/bench/raft_bench.cxx\x1b[0m:\x1b[1;35m319\x1b[0m\n    value of: \x1b[1;34mret->get_accepted()\x1b[0m\n    expected: \x1b[1;32mtrue\x1b[0m\n      actual: \x1b[1;31mfalse\x1b[0m\nmy server id: 3\nleader id: 3\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m51.3 s\x1b[0m)\navg latency: 1284\nfinal throughput: 1.1K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m51.3 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  22449 killed
+Follower 2  :::  22544 killed
+Leader  :::  22621 killed
+Run with thread count 12 done!
+
+Experiments done!
+
+Killing all raft_bench processes ...
+raft_bench  :::  22449 killed
+raft_bench  :::  22544 killed
+raft_bench  :::  22621 killed
+
+
+[12]
+
+Throughput (Kops/s)
+1.1
+
+Average Latency (us)
+1284
