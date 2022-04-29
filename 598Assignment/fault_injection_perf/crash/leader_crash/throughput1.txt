@@ -1,0 +1,27 @@
+Fault injection: leader crash
+Running performance experiments
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  12 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 3\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n12 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ....... done\n-----\nready (30 s)\nmy server id: 3\nleader id: 1\npids: 8025 7917 7799\n\n8025\n7917\n7799\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\nremoving leader... \nkilled (5 s)\n\nmy server id: 3\nleader id: 2\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m56.8 s\x1b[0m)\navg latency: 2221\nfinal throughput: 5.4K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m56.8 s\x1b[0m)\n'
+killing all nodes...
+Follower 1  :::  7799 killed
+Follower 2  :::  7917 killed
+Leader  :::  8025 killed
+Run with thread count 12 done!
+
+Experiments done!
+
+Killing all benchmark process...
+raft_bench  :::  7799 killed
+raft_bench  :::  7917 killed
+raft_bench  :::  8025 killed
+
+
+[12]
+
+Throughput (Kops/s)
+5.4
+
+Average Latency (us)
+2221

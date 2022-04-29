@@ -1,0 +1,24 @@
+Running benchmark
+starting follower 1 ...
+starting follower 2 ...
+Starting leader with  12 client threads ...
+b'[ .... ] bench main\n\x1b[1;30m   === TEST MESSAGE (BEGIN) ===\n\x1b[0m-----\nserver id: 1\nrun duration: 20 seconds\ntraffic: 40000 ops/sec\n12 threads\npayload size: 2048 bytes\n-----\ninit Raft instance ...... done\n-----\nadd server 2 . done\nadd server 3 . done\n-----\npids: 3713 3614 3500\n\n3713\n3614\n3500\n\nserver id 1: tcp://localhost:12347 (LEADER)\nserver id 2: tcp://localhost:12345\nserver id 3: tcp://localhost:12346\n\n\nmy server id: 1\nleader id: 1\n\x1b[1;30m   === TEST MESSAGE (END) ===\n\x1b[0m[ \x1b[32mPASS\x1b[0m ] bench main (\x1b[33m22.1 s\x1b[0m)\navg latency: 590\nfinal throughput: 20.3K\n\x1b[32m1\x1b[0m tests passed out of \x1b[36m1\x1b[0m (\x1b[33m22.1 s\x1b[0m)\n'
+killing followers...
+Follower 1  :::  3500 killed
+Follower 2  :::  3614 killed
+Run with thread count 12 done!
+
+Experiments done!
+
+Killing all benchmark process...
+raft_bench  :::  3500 killed
+raft_bench  :::  3614 killed
+
+
+[12]
+
+Throughput (Kops/s)
+20.3
+
+Average Latency (us)
+590
